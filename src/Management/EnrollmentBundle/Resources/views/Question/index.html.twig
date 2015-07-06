@@ -3,7 +3,7 @@
 {% block body -%}
     <h1>Question list</h1>
 
-    <table class="records_list">
+    <table class="table table-hover">
         <thead>
             <tr>
                 <th>Id</th>
@@ -19,7 +19,7 @@
                 <td>{{ entity.name }}</td>
                 <td>{{ entity.helpblock }}</td>
                 <td>
-                <ul>
+                <ul class="list-unstyled">
                     <li>
                         <a href="{{ path('question_show', { 'id': entity.id }) }}">show</a>
                     </li>
