@@ -28,11 +28,32 @@ class Answer
      */
     private $content;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="Question", inversedBy="answers")
+     * @ORM\JoinColumn(name="question_id", referencedColumnName="id")
+     **/
+    private $question;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Person", inversedBy="answers")
+     * @ORM\JoinColumn(name="person_id", referencedColumnName="id")
+     **/
+    private $person;
+
+    public function getPerson()
+    {
+        return $this->person;
+    }
+
+    public function getQuestion()
+    {
+        return $this->question;
+    }
 
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -55,7 +76,7 @@ class Answer
     /**
      * Get content
      *
-     * @return string 
+     * @return string
      */
     public function getContent()
     {

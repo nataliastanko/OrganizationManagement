@@ -5,12 +5,12 @@ namespace Management\EnrollmentBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Question
+ * Person
  *
  * @ORM\Table()
  * @ORM\Entity
  */
-class Question
+class Person
 {
     /**
      * @var integer
@@ -24,25 +24,54 @@ class Question
     /**
      * @var string
      *
-     * @ORM\Column(name="name", type="text")
+     * @ORM\Column(name="name", type="string", length=255)
      */
     private $name;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="helpblock", type="string", length=255, nullable=true)
+     * @ORM\Column(name="email", type="string", length=255)
      */
-    private $helpblock;
+    private $email;
 
     /**
      * @ORM\OneToMany(targetEntity="Answer", mappedBy="question")
      **/
     private $answers;
 
+    /**
+     * @var \DateTime
+     * @ORM\Column(name="created_at", type="datetime", nullable=true)
+     */
+    protected $createdAt;
+
     public function getAnswers()
     {
         return $this->answers;
+    }
+
+    /**
+     * Sets createdAt.
+     *
+     * @param  \DateTime $createdAt
+     * @return $this
+     */
+    public function setCreatedAt(\DateTime $createdAt)
+    {
+        $this->createdAt = $createdAt;
+
+        return $this;
+    }
+
+    /**
+     * Returns createdAt.
+     *
+     * @return \DateTime
+     */
+    public function getCreatedAt()
+    {
+        return $this->createdAt;
     }
 
     /**
@@ -59,7 +88,7 @@ class Question
      * Set name
      *
      * @param string $name
-     * @return Question
+     * @return Person
      */
     public function setName($name)
     {
@@ -79,25 +108,25 @@ class Question
     }
 
     /**
-     * Set helpblock
+     * Set email
      *
-     * @param string $helpblock
-     * @return Question
+     * @param string $email
+     * @return Person
      */
-    public function setHelpblock($helpblock)
+    public function setEmail($email)
     {
-        $this->helpblock = $helpblock;
+        $this->email = $email;
 
         return $this;
     }
 
     /**
-     * Get helpblock
+     * Get email
      *
      * @return string
      */
-    public function getHelpblock()
+    public function getEmail()
     {
-        return $this->helpblock;
+        return $this->email;
     }
 }
