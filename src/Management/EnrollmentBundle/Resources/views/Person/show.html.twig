@@ -27,4 +27,7 @@
         </a>
     </li>
 </ul>
+
+{% include 'ManagementEnrollmentBundle:Answer:_list.html.twig' with {'entities' : entity.answers} %}
+
 {% endblock %}

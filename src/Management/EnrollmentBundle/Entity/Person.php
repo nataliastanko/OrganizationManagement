@@ -36,7 +36,7 @@ class Person
     private $email;
 
     /**
-     * @ORM\OneToMany(targetEntity="Answer", mappedBy="question")
+     * @ORM\OneToMany(targetEntity="Answer", mappedBy="person")
      **/
     private $answers;
 
