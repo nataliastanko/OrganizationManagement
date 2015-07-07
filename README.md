@@ -38,6 +38,13 @@ Run server:
 
 Check [http://localhost:8000][3].
 
+In memory authentication:
+
+    user: admin
+    password: password
+
+Check [http://localhost:8000][3].
+
 License
 ---------------
 

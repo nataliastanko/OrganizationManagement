@@ -1,13 +1,28 @@
 security:
-
+    encoders:
+        Symfony\Component\Security\Core\User\User: plaintext
+    role_hierarchy:
+        ROLE_ADMIN:       ROLE_USER
+        ROLE_SUPER_ADMIN: [ROLE_USER, ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH]
     providers:
         in_memory:
-            memory: ~
-
+            memory:
+                users:
+                    admin:
+                        password:           password
+                        roles:              ROLE_USER
     firewalls:
         dev:
             pattern: ^/(_(profiler|wdt|error)|css|images|js)/
             security: false
 
-        main:
+        secured_area:
+            pattern:    ^/
             anonymous: ~
+            http_basic:
+                realm: "MyApp Realm - Login"
+
+    access_control:
+        #- { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY, requires_channel: https }
+        #- { path: ^/_internal, roles: IS_AUTHENTICATED_ANONYMOUSLY, ip: 127.0.0.1 }
+        - { path: ^/, roles: ROLE_USER }
