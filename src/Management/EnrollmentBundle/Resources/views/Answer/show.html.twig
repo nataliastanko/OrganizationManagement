@@ -1,7 +1,7 @@
 {% extends '::base.html.twig' %}
 
 {% block body -%}
-    <h1>Answer</h1>
+    <h1>{{ 'enrollment.answer.details' | trans }}</h1>
 
     <table class="table table-hover">
         <tbody>
@@ -10,11 +10,11 @@
                 <td>{{ entity.id }}</td>
             </tr>
             <tr>
-                <th>Question</th>
+                <th>{{ 'enrollment.question.name' | trans }}</th>
                 <td>{{ entity.question.name }}</td>
             </tr>
             <tr>
-                <th>Content</th>
+                <th>{{ 'enrollment.answer.content' | trans }}</th>
                 <td>{{ entity.content }}</td>
             </tr>
         </tbody>
@@ -23,7 +23,7 @@
         <ul class="list-unstyled">
     <li>
         <a href="{{ path('answer') }}">
-            Back to the list
+            {{ 'button.back' | trans }}
         </a>
     </li>
 </ul>

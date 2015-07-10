@@ -1,27 +1,27 @@
 {% extends '::base.html.twig' %}
 
 {% block body -%}
-    <h1>Question list</h1>
+    <h1>{{ 'enrollment.person.list' | trans }}</h1>
 
     <table class="table table-hover">
         <thead>
             <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>Helpblock</th>
-                <th>Actions</th>
+                <th>{{ 'list.number' | trans }}</th>
+                <th>{{ 'enrollment.question.name' | trans }}</th>
+                <th>{{ 'enrollment.question.description' | trans }}</th>
+                <th>&nbsp;</th>
             </tr>
         </thead>
         <tbody>
         {% for entity in entities %}
             <tr>
-                <td><a href="{{ path('question_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+                <td>{{ loop.index }}</td>
                 <td>{{ entity.name }}</td>
                 <td>{{ entity.helpblock }}</td>
                 <td>
                 <ul class="list-unstyled">
                     <li>
-                        <a href="{{ path('question_show', { 'id': entity.id }) }}">show</a>
+                        <a href="{{ path('question_show', { 'id': entity.id }) }}">{{ 'button.show' | trans}}</a>
                     </li>
                 </ul>
                 </td>

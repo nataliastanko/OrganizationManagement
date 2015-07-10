@@ -1,0 +1,29 @@
+menu:
+    app:
+        title: "WiT"
+    management: "Zarządzanie"
+    home: "Strona domowa"
+    enrollment: "Rekrutacja"
+    persons: "Osoby"
+    questions: "Pytania"
+    answers: "Odpowiedzi"
+button:
+    show: "szczegóły"
+    back: "powrót"
+list:
+    number: "Kolejna liczba"
+enrollment:
+    person:
+        list: "Lista osób"
+        details: "Osoba"
+        name: "Imię"
+        email: "Email"
+    question:
+        list: "Lista pytań"
+        details: "Pytanie"
+        name: "Treść pytania"
+        description: "Opis"
+    answer:
+        list: "Lista odpowiedzi"
+        details: "Odpowiedź"
+        content: "Treść odpowiedzi"
