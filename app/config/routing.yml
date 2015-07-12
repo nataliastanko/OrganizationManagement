@@ -1,8 +1,9 @@
 management_enrollment:
     resource: "@ManagementEnrollmentBundle/Controller/"
     type:     annotation
-    prefix:   /
+    prefix:   /enrollment
 
 app:
     resource: "@AppBundle/Controller/"
     type:     annotation
+    prefix:   /
