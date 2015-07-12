@@ -34,7 +34,7 @@ class LocaleListener implements EventSubscriberInterface
             // if no explicit locale has been set on this request, use the Accept-Language header
             $request->setLocale($request->getSession()->get(
                 '_locale',
-                $request->getPreferredLanguage(['en', 'pl'])
+                $request->getPreferredLanguage(array('en', 'pl'))
                 )
             );
         }
