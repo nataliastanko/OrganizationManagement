@@ -1,0 +1,23 @@
+menu:
+    account: "Account"
+    users: "Users"
+    log:
+        in: "Log in"
+        out: "Log out"
+    register: "Register"
+    management: "Management"
+    home: "Homepage"
+    enrollment: "Enrollment"
+    persons: "Persons"
+    questions: "Questions"
+    answers: "Answers"
+    speakers: "Speakers"
+    workshops: "Warsztaty"
+
+button:
+    show: "details"
+    back: "back"
+list:
+    number: "Number"
+
+

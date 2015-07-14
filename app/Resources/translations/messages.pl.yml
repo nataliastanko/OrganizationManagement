@@ -1,0 +1,21 @@
+menu:
+    account: "Konto"
+    users: "Użytkownicy"
+    log:
+        in: "Zalouj się"
+        out: "Wyloguj się"
+    register: "Zarejestruj się"
+    management: "Zarządzanie"
+    home: "Strona domowa"
+    enrollment: "Rekrutacja"
+    persons: "Osoby"
+    questions: "Pytania"
+    answers: "Odpowiedzi"
+    speakers: "Prelegenci"
+    workshops: "Workshops"
+
+button:
+    show: "szczegóły"
+    back: "powrót"
+list:
+    number: "Kolejna liczba"
