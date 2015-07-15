@@ -1,0 +1,11 @@
+meeting:
+    speaker:
+        list: "Lista prelegentów"
+        details: "Prelegent"
+        edit: "Edycja prelegenta"
+        add: "Dodawanie nowego prelegenta"
+        name: "Imię"
+        lastName: "Nazwisko"
+        email: "Email"
+        phoneNumber: "Numer telefonu"
+        bio: "Biografia, opis"

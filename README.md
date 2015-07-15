@@ -3,6 +3,19 @@ Content management app
 
 Example Symfony application
 
+What's inside?
+-------------------------------
+
+Bundles:
+
+  * EnrollmentBundle
+  * MeetingBundle
+  * LogEntryBundle
+
+Integration with:
+
+  * FOSUserBundle
+
 Installation and running
 ----------------------------------
 
@@ -10,10 +23,13 @@ Installation and running
 
 Make sure you have installed the requirements for running symfony [requirements][1].
 
+PHP >= 5.4
+
 Install [composer][2] to manage dependencies.
 To install dependencies run command in project root dir:
 
     composer install
+
 
 ### Run app
 

@@ -1,3 +1,8 @@
+management_meeting:
+    resource: "@ManagementMeetingBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
 management_user:
     resource: "@ManagementUserBundle/Controller/"
     type:     annotation

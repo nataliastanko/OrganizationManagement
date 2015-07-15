@@ -21,6 +21,7 @@ class AppKernel extends Kernel
             new AppBundle\AppBundle(),
             new Management\EnrollmentBundle\ManagementEnrollmentBundle(),
             new Management\UserBundle\ManagementUserBundle(),
+            new Management\MeetingBundle\ManagementMeetingBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

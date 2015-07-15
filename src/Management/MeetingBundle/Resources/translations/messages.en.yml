@@ -1,0 +1,11 @@
+meeting:
+    speaker:
+        list: "Speaker list"
+        details: "User"
+        edit: "Speaker edit"
+        add: "Speaker add"
+        name: "Name"
+        lastName: "Last name"
+        email: "Email"
+        phoneNumber: "Phone number"
+        bio: "Biography, description"
