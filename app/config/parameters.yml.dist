@@ -17,3 +17,11 @@ parameters:
 
     # A secret key that's used to generate certain security-related tokens
     secret:            ThisTokenIsNotSoSecretChangeIt
+
+    locale: en #default locale fallback
+
+    in_memory_password: password
+
+    email_sender_address: symfony@example.com
+    email_sender_name: Management App
+
