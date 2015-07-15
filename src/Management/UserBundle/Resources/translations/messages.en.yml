@@ -1,0 +1,9 @@
+user:
+    list: "Users list"
+    details: "User"
+    edit: "User edit"
+    name: "Name"
+    lastName: "Last name"
+    email: "Email"
+    phoneNumber: "Phone number"
+

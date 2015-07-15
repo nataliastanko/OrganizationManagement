@@ -1,6 +1,6 @@
 menu:
     account: "Konto"
-    users: "Użytkownicy"
+    users: "Organizatorki"
     log:
         in: "Zalouj się"
         out: "Wyloguj się"
@@ -8,14 +8,21 @@ menu:
     management: "Zarządzanie"
     home: "Strona domowa"
     enrollment: "Rekrutacja"
+    enrollment.city.1: "Kraków"
+    enrollment.city.others: "Inne"
     persons: "Osoby"
     questions: "Pytania"
     answers: "Odpowiedzi"
     speakers: "Prelegenci"
-    workshops: "Workshops"
-
+    workshops: "Warsztaty"
+    meetings: "Spotkania"
+    cities: "Miasta"
+    topics: "Tematy"
 button:
     show: "szczegóły"
     back: "powrót"
+    edit: "edytuj"
+    update: "zapisz"
+    create: "dodaj"
 list:
     number: "Kolejna liczba"

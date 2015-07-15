@@ -8,15 +8,22 @@ menu:
     management: "Management"
     home: "Homepage"
     enrollment: "Enrollment"
+    enrollment.city.1: "London"
+    enrollment.city.others: "Others"
     persons: "Persons"
     questions: "Questions"
     answers: "Answers"
     speakers: "Speakers"
-    workshops: "Warsztaty"
-
+    workshops: "Workshops"
+    meetings: "Meetings"
+    cities:  "City"
+    topics: "Topics"
 button:
     show: "details"
     back: "back"
+    edit: "edit"
+    update: "update"
+    create: "create"
 list:
     number: "Number"
 

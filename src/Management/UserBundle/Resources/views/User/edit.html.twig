@@ -1,0 +1,7 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>{{ 'user.edit' | trans }}</h1>
+
+    {% include 'ManagementUserBundle:User:_form.html.twig' %}
+{% endblock %}

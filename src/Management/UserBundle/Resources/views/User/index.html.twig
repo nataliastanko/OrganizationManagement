@@ -1,0 +1,38 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>{{ 'user.list' | trans }}</h1>
+
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>{{ 'user.email' | trans }}</th>
+                <th>{{ 'user.name' | trans }}</th>
+                <th>{{ 'user.lastName' | trans }}</th>
+                <th>{{ 'user.phoneNumber' | trans }}</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td><a href="{{ path('user_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+                <td>{{ entity.email }}</td>
+                <td>{{ entity.name }}</td>
+                <td>{{ entity.lastName }}</td>
+                <td>{{ entity.phoneNumber }}</td>
+                <td>
+                <ul>
+                    <li>
+                        <a href="{{ path('user_show', { 'id': entity.id }) }}">show</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('user_edit', { 'id': entity.id }) }}">edit</a>
+                    </li>
+                </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
