@@ -6,7 +6,7 @@
     <table class="table table-hover">
         <thead>
             <tr>
-                <th>Id</th>
+                <th>{{ 'list.number' | trans }}</th>
                 <th>{{ 'user.email' | trans }}</th>
                 <th>{{ 'user.name' | trans }}</th>
                 <th>{{ 'user.lastName' | trans }}</th>
@@ -14,9 +14,9 @@
             </tr>
         </thead>
         <tbody>
-        {% for entity in entities %}
+        {% for i, entity in entities %}
             <tr>
-                <td><a href="{{ path('user_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+                <td>{{ loop.index }}</td>
                 <td>{{ entity.email }}</td>
                 <td>{{ entity.name }}</td>
                 <td>{{ entity.lastName }}</td>

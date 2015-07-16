@@ -1,12 +1,12 @@
 management_meeting:
     resource: "@ManagementMeetingBundle/Controller/"
     type:     annotation
-    prefix:   /
+    prefix:   /meeting
 
 management_user:
     resource: "@ManagementUserBundle/Controller/"
     type:     annotation
-    prefix:   /
+    prefix:   /account
 
 management_enrollment:
     resource: "@ManagementEnrollmentBundle/Controller/"

@@ -2,7 +2,7 @@ menu:
     account: "Konto"
     users: "Organizatorki"
     log:
-        in: "Zalouj się"
+        in: "Zaloguj się"
         out: "Wyloguj się"
     register: "Zarejestruj się"
     management: "Zarządzanie"

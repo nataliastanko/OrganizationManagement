@@ -1,7 +1,7 @@
 meeting:
     speaker:
         list: "Speaker list"
-        details: "User"
+        details: "Speaker"
         edit: "Speaker edit"
         add: "Speaker add"
         name: "Name"
@@ -9,3 +9,10 @@ meeting:
         email: "Email"
         phoneNumber: "Phone number"
         bio: "Biography, description"
+    topic:
+        name: "Name"
+        description: "Description"
+        list: "Topic list"
+        details: "Topic"
+        edit: "Topic edit"
+        add: "Topic add"

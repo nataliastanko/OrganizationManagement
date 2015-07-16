@@ -9,3 +9,10 @@ meeting:
         email: "Email"
         phoneNumber: "Numer telefonu"
         bio: "Biografia, opis"
+    topic:
+        name: "Temat"
+        description: "Opis"
+        list: "Lista tematów"
+        details: "Temat"
+        edit: "Edycja tematu"
+        add: "Dodawanie nowego tematu"
