@@ -5,7 +5,10 @@ namespace Management\UserBundle\Entity;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Validator\Constraints as Assert;
 
+use Gedmo\Timestampable\Traits\TimestampableEntity;
+
 use FOS\UserBundle\Model\User as BaseUser;
+
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -21,6 +24,12 @@ class User extends BaseUser
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     protected $id;
+
+    /**
+     * Hook timestampable behavior
+     * updates createdAt, updatedAt fields
+     */
+    use TimestampableEntity;
 
     /**
      * @var string

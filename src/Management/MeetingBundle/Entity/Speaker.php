@@ -5,6 +5,10 @@ namespace Management\MeetingBundle\Entity;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Validator\Constraints as Assert;
 
+use Gedmo\Timestampable\Traits\TimestampableEntity;
+use Gedmo\Blameable\Traits\BlameableEntity;
+use Gedmo\Mapping\Annotation as Gedmo;
+
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -12,10 +16,13 @@ use Doctrine\ORM\Mapping as ORM;
  *
  * @ORM\Table(name="speakers")
  * @ORM\Entity
+ * @Gedmo\Loggable
+ * @Gedmo\SoftDeleteable(fieldName="deletedAt", timeAware=false)
  * UniqueEntity(fields="email", message="error.user.email.taken")
  */
 class Speaker
 {
+
     /**
      * @var integer
      *
@@ -26,36 +33,53 @@ class Speaker
     private $id;
 
     /**
+     * Hook timestampable behavior
+     * updates createdAt, updatedAt fields
+     */
+    use TimestampableEntity;
+
+    /**
+     * Hook blameable behavior
+     * updates createdBy, updatedBy fields
+     */
+    use BlameableEntity;
+
+    /**
+     * @ORM\Column(name="deletedAt", type="datetime", nullable=true)
+     */
+    private $deletedAt;
+
+    /**
      * @var string
-     *
+     * @Gedmo\Versioned
      * @ORM\Column(name="name", type="string", length=255)
      */
     private $name;
 
     /**
      * @var string
-     *
+     * @Gedmo\Versioned
      * @ORM\Column(name="last_name", type="string", length=255)
      */
     private $lastName;
 
     /**
      * @var string
-     *
+     * @Gedmo\Versioned
      * @ORM\Column(name="bio", type="text", nullable=true)
      */
     private $bio;
 
     /**
      * @var string
-     *
+     * @Gedmo\Versioned
      * @ORM\Column(name="photo", type="string", length=255, nullable=true)
      */
     private $photo;
 
     /**
      * @var string
-     *
+     * @Gedmo\Versioned
      * Assert\NotBlank(message = "error.user.phone_number.not_blank", groups={"settings"})
      * Assert\Regex(
      *  pattern= "/([0-9\-\+\s])?/",
@@ -70,7 +94,7 @@ class Speaker
     /**
      *
      * @var string $email
-     *
+     * @Gedmo\Versioned
      * @ORM\Column(name="email", type="string", length=255, nullable=true)
      * @Assert\Email(message = "error.user.email.email_not_match", groups={"settings"})
      */
