@@ -77,6 +77,11 @@ class Speaker
     protected $email;
 
     /**
+     * @ORM\OneToMany(targetEntity="Topic", mappedBy="speaker")
+     **/
+    private $topics;
+
+    /**
      * Get id
      *
      * @return integer
@@ -84,6 +89,16 @@ class Speaker
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * Get topics
+     *
+     * @return ArrayCollection
+     */
+    public function getTopics()
+    {
+        return $this->topics;
     }
 
     /**

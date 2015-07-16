@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Topic
  *
- * @ORM\Table()
+ * @ORM\Table(name="topics")
  * @ORM\Entity
  */
 class Topic
@@ -35,6 +35,11 @@ class Topic
      */
     private $description;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="Speaker", inversedBy="topics")
+     * @ORM\JoinColumn(name="speaker_id", referencedColumnName="id")
+     **/
+    private $speaker;
 
     /**
      * Get id
@@ -44,6 +49,29 @@ class Topic
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * Get speaker
+     *
+     * @return Speaker
+     */
+    public function getSpeaker()
+    {
+        return $this->speaker;
+    }
+
+    /**
+     * Set speaker
+     *
+     * @param Speaker $speaker
+     * @return Topic
+     */
+    public function setSpeaker($speaker)
+    {
+        $this->speaker = $speaker;
+
+        return $this;
     }
 
     /**
