@@ -37,4 +37,7 @@
     </a>
 
     {# {{ form(delete_form) }} #}
+
+    {% include "ManagementMeetingBundle:Topic:_list.html.twig" with {'entities' : entity.topics} %}
+
 {% endblock %}
