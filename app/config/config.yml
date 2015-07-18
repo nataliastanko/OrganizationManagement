@@ -77,7 +77,7 @@ doctrine:
                 mappings:
                     OrganizationEnrollmentBundle:
                         type: annotation
-                    OrganizationMeetingBundle:
+                    OrganizationManagementBundle:
                         type: annotation
                     OrganizationUserBundle:
                         type: annotation

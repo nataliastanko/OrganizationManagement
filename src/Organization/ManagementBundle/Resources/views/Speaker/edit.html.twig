@@ -1,0 +1,7 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>{{ 'organization.management.speaker.edit' | trans }}</h1>
+
+    {% include 'OrganizationManagementBundle:Speaker:_form.html.twig' %}
+{% endblock %}

@@ -23,7 +23,7 @@ class AppKernel extends Kernel
             new AppBundle\AppBundle(),
             new Organization\EnrollmentBundle\OrganizationEnrollmentBundle(),
             new Organization\UserBundle\OrganizationUserBundle(),
-            new Organization\MeetingBundle\OrganizationMeetingBundle(),
+            new Organization\ManagementBundle\OrganizationManagementBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

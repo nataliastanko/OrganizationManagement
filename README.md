@@ -1,4 +1,4 @@
-Content management app
+Organization management app
 ==========
 
 Example Symfony application
@@ -6,15 +6,17 @@ Example Symfony application
 What's inside?
 -------------------------------
 
-Bundles:
+Organization bundles:
 
   * EnrollmentBundle
-  * MeetingBundle
-  * LogEntryBundle
+  * UserBundle
+  * ManagementBundle
 
 Integration with:
 
   * FOSUserBundle
+  * DoctrineMigrationsBundle
+  * StofDoctrineExtensionsBundle
 
 Installation and running
 ----------------------------------

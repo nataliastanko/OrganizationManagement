@@ -1,5 +1,5 @@
-organization_meeting:
-    resource: "@OrganizationMeetingBundle/Controller/"
+organization_management:
+    resource: "@OrganizationManagementBundle/Controller/"
     type:     annotation
     prefix:   /meeting
 

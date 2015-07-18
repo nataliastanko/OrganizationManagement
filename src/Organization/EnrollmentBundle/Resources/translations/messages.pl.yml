@@ -1,15 +1,16 @@
-enrollment:
-    person:
-        list: "Lista osób"
-        details: "Osoba"
-        name: "Imię"
-        email: "Email"
-    question:
-        list: "Lista pytań"
-        details: "Pytanie"
-        name: "Treść pytania"
-        description: "Opis"
-    answer:
-        list: "Lista odpowiedzi"
-        details: "Odpowiedź"
-        content: "Treść odpowiedzi"
+organization:
+    enrollment:
+        person:
+            list: "Lista osób"
+            details: "Osoba"
+            name: "Imię"
+            email: "Email"
+        question:
+            list: "Lista pytań"
+            details: "Pytanie"
+            name: "Treść pytania"
+            description: "Opis"
+        answer:
+            list: "Lista odpowiedzi"
+            details: "Odpowiedź"
+            content: "Treść odpowiedzi"

@@ -6,7 +6,7 @@
 
     <!--
     <services>
-        <service id="management_organization.enrollment.example" class="Organization\EnrollmentBundle\Example">
+        <service id="management_meeting.example" class="Organization\ManagementBundle\Example">
             <argument type="service" id="service_id" />
             <argument>plain_value</argument>
             <argument>%parameter_name%</argument>
