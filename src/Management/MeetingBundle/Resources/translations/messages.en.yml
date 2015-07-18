@@ -16,3 +16,9 @@ meeting:
         details: "Topic"
         edit: "Topic edit"
         add: "Topic add"
+    city:
+        name: "Name"
+        list: "City list"
+        details: "City"
+        edit: "City edit"
+        add: "City add"

@@ -16,3 +16,9 @@ meeting:
         details: "Temat"
         edit: "Edycja tematu"
         add: "Dodawanie nowego tematu"
+    city:
+        name: "Miasto"
+        list: "Lista miast"
+        details: "Miasto"
+        edit: "Edycja miasta"
+        add: "Dodawanie nowego miasta"
