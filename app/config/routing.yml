@@ -1,15 +1,15 @@
-management_meeting:
-    resource: "@ManagementMeetingBundle/Controller/"
+organization_meeting:
+    resource: "@OrganizationMeetingBundle/Controller/"
     type:     annotation
     prefix:   /meeting
 
-management_user:
-    resource: "@ManagementUserBundle/Controller/"
+organization_user:
+    resource: "@OrganizationUserBundle/Controller/"
     type:     annotation
     prefix:   /account
 
-management_enrollment:
-    resource: "@ManagementEnrollmentBundle/Controller/"
+organization_enrollment:
+    resource: "@OrganizationEnrollmentBundle/Controller/"
     type:     annotation
     prefix:   /enrollment
 

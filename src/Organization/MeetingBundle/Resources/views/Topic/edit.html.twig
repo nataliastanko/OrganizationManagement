@@ -1,0 +1,7 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>{{ 'organization.topic.edit' | trans }}</h1>
+
+    {% include 'OrganizationMeetingBundle:Topic:_form.html.twig' %}
+{% endblock %}

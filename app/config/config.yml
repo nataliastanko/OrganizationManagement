@@ -75,11 +75,11 @@ doctrine:
             default:
                 auto_mapping: true
                 mappings:
-                    ManagementEnrollmentBundle:
+                    OrganizationEnrollmentBundle:
                         type: annotation
-                    ManagementMeetingBundle:
+                    OrganizationMeetingBundle:
                         type: annotation
-                    ManagementUserBundle:
+                    OrganizationUserBundle:
                         type: annotation
                     gedmo_loggable:
                         type: annotation

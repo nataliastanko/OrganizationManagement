@@ -21,9 +21,9 @@ class AppKernel extends Kernel
             new Doctrine\Bundle\MigrationsBundle\DoctrineMigrationsBundle(),
 
             new AppBundle\AppBundle(),
-            new Management\EnrollmentBundle\ManagementEnrollmentBundle(),
-            new Management\UserBundle\ManagementUserBundle(),
-            new Management\MeetingBundle\ManagementMeetingBundle(),
+            new Organization\EnrollmentBundle\OrganizationEnrollmentBundle(),
+            new Organization\UserBundle\OrganizationUserBundle(),
+            new Organization\MeetingBundle\OrganizationMeetingBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
