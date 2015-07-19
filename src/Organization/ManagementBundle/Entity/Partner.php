@@ -2,6 +2,9 @@
 
 namespace Organization\ManagementBundle\Entity;
 
+use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
+
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Validator\Constraints as Assert;
 
@@ -9,22 +12,21 @@ use Gedmo\Timestampable\Traits\TimestampableEntity;
 use Gedmo\Blameable\Traits\BlameableEntity;
 use Gedmo\Mapping\Annotation as Gedmo;
 
-use Doctrine\ORM\Mapping as ORM;
+use Organization\ManagementBundle\Entity\City;
 
 /**
- * Speaker
+ * Partner
  *
- * @ORM\Table(name="speakers")
+ * @ORM\Table(name="partners")
  * @ORM\Entity
  * @Gedmo\Loggable
  * @Gedmo\SoftDeleteable(fieldName="deletedAt", timeAware=false)
- * @UniqueEntity(fields="email", message="error.speaker.name.taken")
- * @UniqueEntity(fields="url", message="error.speaker.url.taken")
- * @UniqueEntity(fields="phoneNumber", message="error.speaker.phoneNumber.taken")
+ * @UniqueEntity(fields="name", message="error.partner.name.taken")
+ * UniqueEntity(fields="email", message="error.partner.email.taken")
+ * @UniqueEntity(fields="url", message="error.sponsor.url.taken")
  */
-class Speaker
+class Partner
 {
-
     /**
      * @var integer
      *
@@ -59,37 +61,13 @@ class Speaker
     private $name;
 
     /**
-     * @var string
+     *
+     * @var string $email
      * @Gedmo\Versioned
-     * @Assert\Url(
-     *    message = "error.url.not_match",
-     *    protocols = {"http", "https"},
-     *    checkDNS = true
-     * )
-     * @ORM\Column(name="url", type="string", length=255, nullable=true)
+     * @ORM\Column(name="email", type="string", length=255, nullable=true)
+     * @Assert\Email(message = "error.user.email.email_not_match", groups={"settings"})
      */
-    private $url;
-
-    /**
-     * @var string
-     * @Gedmo\Versioned
-     * @ORM\Column(name="last_name", type="string", length=255)
-     */
-    private $lastName;
-
-    /**
-     * @var string
-     * @Gedmo\Versioned
-     * @ORM\Column(name="bio", type="text", nullable=true)
-     */
-    private $bio;
-
-    /**
-     * @var string
-     * @Gedmo\Versioned
-     * @ORM\Column(name="photo", type="string", length=255, nullable=true)
-     */
-    private $photo;
+    protected $email;
 
     /**
      * @var string
@@ -106,18 +84,40 @@ class Speaker
     private $phoneNumber;
 
     /**
-     *
-     * @var string $email
+     * @var string
      * @Gedmo\Versioned
-     * @ORM\Column(name="email", type="string", length=255, nullable=true)
-     * @Assert\Email(message = "error.user.email.email_not_match", groups={"settings"})
+     * @Assert\Url(
+     *    message = "error.url.not_match",
+     *    protocols = {"http", "https"},
+     *    checkDNS = true
+     * )
+     * @ORM\Column(name="url", type="string", length=255)
      */
-    protected $email;
+    private $url;
 
     /**
-     * @ORM\OneToMany(targetEntity="Topic", mappedBy="speaker")
+     * @var string
+     * @Gedmo\Versioned
+     * @ORM\Column(name="description", type="text", nullable=true)
+     */
+    private $description;
+
+    /**
+     * @var string
+     * @Gedmo\Versioned
+     * @ORM\Column(name="resources", type="text", nullable=true)
+     */
+    private $resources;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="City", inversedBy="partners")
+     * @ORM\JoinTable(name="partners_city")
      **/
-    private $topics;
+    private $cities;
+
+    public function __construct() {
+        $this->cities = new ArrayCollection();
+    }
 
     /**
      * Get id
@@ -130,20 +130,10 @@ class Speaker
     }
 
     /**
-     * Get topics
-     *
-     * @return ArrayCollection
-     */
-    public function getTopics()
-    {
-        return $this->topics;
-    }
-
-    /**
      * Set name
      *
      * @param string $name
-     * @return Speaker
+     * @return Partner
      */
     public function setName($name)
     {
@@ -163,79 +153,79 @@ class Speaker
     }
 
     /**
-     * Set lastName
+     * Set description
      *
-     * @param string $lastName
-     * @return Speaker
+     * @param string $description
+     * @return Partner
      */
-    public function setLastName($lastName)
+    public function setDescription($description)
     {
-        $this->lastName = $lastName;
+        $this->description = $description;
 
         return $this;
     }
 
     /**
-     * Get lastName
+     * Get description
      *
      * @return string
      */
-    public function getLastName()
+    public function getDescription()
     {
-        return $this->lastName;
+        return $this->description;
     }
 
     /**
-     * Set bio
+     * Set resources
      *
-     * @param string $bio
-     * @return Speaker
+     * @param string $resources
+     * @return Partner
      */
-    public function setBio($bio)
+    public function setResources($resources)
     {
-        $this->bio = $bio;
+        $this->resources = $resources;
 
         return $this;
     }
 
     /**
-     * Get bio
+     * Get resources
      *
      * @return string
      */
-    public function getBio()
+    public function getResources()
     {
-        return $this->bio;
+        return $this->resources;
     }
 
     /**
-     * Set photo
+     * Set url
      *
-     * @param string $photo
-     * @return Speaker
+     * @param string $resources
+     * @return Partner
      */
-    public function setPhoto($photo)
+    public function setUrl($url)
     {
-        $this->photo = $photo;
+        $this->url = $url;
 
         return $this;
     }
 
     /**
-     * Get photo
+     * Get url
      *
      * @return string
      */
-    public function getPhoto()
+    public function getUrl()
     {
-        return $this->photo;
+        return $this->url;
     }
 
     /**
      * Set phoneNumber
      *
      * @param string $phoneNumber
-     * @return Speaker
+     * @return Partner
      */
     public function setPhoneNumber($phoneNumber)
     {
@@ -258,7 +248,7 @@ class Speaker
      * Set email
      *
      * @param string  $email
-     * @return Speaker
+     * @return Partner
      */
     public function setEmail( $email ) {
         $this->email = $email;
@@ -276,26 +266,19 @@ class Speaker
     }
 
     /**
-     * Set url
+     * Get cities
      *
-     * @param string $resources
-     * @return Speaker
+     * @return array
      */
-    public function setUrl($url)
+    public function getCities()
     {
-        $this->url = $url;
-
-        return $this;
+        return $this->cities;
     }
 
-    /**
-     * Get url
-     *
-     * @return string
-     */
-    public function getUrl()
+    public function addCity(City $city)
     {
-        return $this->url;
+        $tag->addCity($this); // synchronously updating inverse side
+        $this->cities[] = $city;
     }
 
 }

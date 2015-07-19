@@ -6,7 +6,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-class SpeakerType extends AbstractType
+class HelperType extends AbstractType
 {
     /**
      * @param FormBuilderInterface $builder
@@ -18,38 +18,37 @@ class SpeakerType extends AbstractType
             ->add('name', 'text',
                 [
                 'required' => true,
-                'label' => 'organization.management.speaker.name'
-                ]
-            )
-            ->add('url', 'url',
-                [
-                'required' => false,
-                'label' => 'organization.management.speaker.url'
+                'label' => 'organization.management.helper.name'
                 ]
             )
             ->add('lastName', 'text',
                 [
                 'required' => true,
-                'label' => 'organization.management.speaker.lastName'
+                'label' => 'organization.management.helper.lastName'
                 ]
             )
-            ->add('bio', 'textarea',
+            ->add('url', 'url',
                 [
                 'required' => false,
-                'label' => 'organization.management.speaker.bio'
+                'label' => 'organization.management.helper.url'
                 ]
             )
-            // ->add('photo')
             ->add('phoneNumber', 'text',
                 [
                 'required' => false,
-                'label' => 'organization.management.speaker.phoneNumber'
+                'label' => 'organization.management.helper.phoneNumber'
                 ]
             )
             ->add('email', 'email',
                 [
                 'required' => false,
-                'label' => 'organization.management.speaker.email'
+                'label' => 'organization.management.partner.email'
+                ]
+            )
+            ->add('description', 'textarea',
+                [
+                'required' => false,
+                'label' => 'organization.management.helper.description'
                 ]
             )
         ;
@@ -61,7 +60,7 @@ class SpeakerType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'Organization\ManagementBundle\Entity\Speaker'
+            'data_class' => 'Organization\ManagementBundle\Entity\Helper'
         ));
     }
 
@@ -70,6 +69,6 @@ class SpeakerType extends AbstractType
      */
     public function getName()
     {
-        return 'speaker';
+        return 'helper';
     }
 }

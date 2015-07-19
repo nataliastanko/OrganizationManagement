@@ -18,11 +18,16 @@ menu:
     meetings: "Spotkania"
     cities: "Miasta"
     topics: "Tematy"
+    contacts: "Kontakty"
+    sponsors: "Sponsorzy"
+    partners: "Partnerzy"
+    helpers: "Osoby chętne do pomocy"
 button:
     show: "szczegóły"
     back: "powrót"
     edit: "edytuj"
     update: "zapisz"
     create: "dodaj"
+    add: "dodaj"
 list:
     number: "Kolejna liczba"

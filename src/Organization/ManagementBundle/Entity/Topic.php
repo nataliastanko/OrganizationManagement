@@ -2,11 +2,12 @@
 
 namespace Organization\ManagementBundle\Entity;
 
+use Doctrine\ORM\Mapping as ORM;
+
 use Gedmo\Timestampable\Traits\TimestampableEntity;
 use Gedmo\Blameable\Traits\BlameableEntity;
 use Gedmo\Mapping\Annotation as Gedmo;
 
-use Doctrine\ORM\Mapping as ORM;
 /**
  * Topic
  *

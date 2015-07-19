@@ -15,8 +15,12 @@ class CityType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('name')
-        ;
+            ->add('name', 'text',
+                [
+                'required' => true,
+                'label' => 'organization.management.city.name'
+                ]
+            )
     }
 
     /**

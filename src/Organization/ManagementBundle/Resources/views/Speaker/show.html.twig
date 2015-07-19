@@ -18,16 +18,20 @@
                 <td>{{ entity.lastName }}</td>
             </tr>
             <tr>
-                <th>{{ 'organization.management.speaker.bio' | trans }}</th>
-                <td>{{ entity.bio }}</td>
+                <th>{{ 'organization.management.speaker.email' | trans }}</th>
+                <td>{{ entity.email }}</td>
             </tr>
             <tr>
                 <th>{{ 'organization.management.speaker.phoneNumber' | trans }}</th>
                 <td>{{ entity.phoneNumber }}</td>
             </tr>
             <tr>
-                <th>{{ 'organization.management.speaker.email' | trans }}</th>
-                <td>{{ entity.email }}</td>
+                <th>{{ 'organization.management.speaker.url' | trans }}</th>
+                <td><a href="{{ entity.url }}">{{ entity.url }}</a></td>
+            </tr>
+            <tr>
+                <th>{{ 'organization.management.speaker.bio' | trans }}</th>
+                <td>{{ entity.bio }}</td>
             </tr>
         </tbody>
     </table>

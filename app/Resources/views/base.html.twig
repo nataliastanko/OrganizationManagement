@@ -4,7 +4,7 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-        <title>{% block title %}Content management{% endblock %}</title>
+        <title>{% block title %}Organization management{% endblock %}</title>
         {% block stylesheets %}
         <!-- Bootstrap core CSS -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
@@ -56,11 +56,28 @@
                             </ul>
                         </li>
                         <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{ 'menu.cities' | trans }} <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><li><a href="{{ url('city') }}">city placeholder</a></li></li>
+                                <li role="separator" class="divider"></li>
+                                <li><a href="{{ url('city') }}">{{ 'button.add' | trans }}</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{ 'menu.contacts' | trans }} <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="{{ url('speaker') }}">{{ 'menu.speakers' | trans }}</a></li>
+                                <li><a href="{{ url('sponsor') }}">{{ 'menu.sponsors' | trans }}</a></li>
+                                <li><a href="{{ url('partner') }}">{{ 'menu.partners' | trans }}</a></li>
+                                <li><a href="{{ url('helper') }}">{{ 'menu.helpers' | trans }}</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{ 'menu.meetings' | trans }} <span class="caret"></span></a>
                             <ul class="dropdown-menu">
-                                <li><a href="{{ url('city') }}">{{ 'menu.cities' | trans }}</a></li>
                                 <li><a href="{{ url('topic') }}">{{ 'menu.topics' | trans }}</a></li>
-                                <li><a href="{{ url('speaker') }}">{{ 'menu.speakers' | trans }}</a></li>
+                                <li role="separator" class="divider"></li>
+                                <li><a href="{{ url('city') }}">{{ 'button.add' | trans }}</a></li>
                             </ul>
                         </li>
                     </ul>

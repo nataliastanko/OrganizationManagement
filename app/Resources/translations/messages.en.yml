@@ -18,12 +18,17 @@ menu:
     meetings: "Meetings"
     cities:  "City"
     topics: "Topics"
+    contacts: "Contacts"
+    sponsors: "Sponsors"
+    partners: "Partners"
+    helpers: "Helpers"
 button:
     show: "details"
     back: "back"
     edit: "edit"
     update: "update"
     create: "create"
+    add: "add"
 list:
     number: "Number"
 

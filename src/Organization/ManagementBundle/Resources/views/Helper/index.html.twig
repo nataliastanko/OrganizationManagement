@@ -1,9 +1,9 @@
 {% extends '::base.html.twig' %}
 
 {% block body -%}
-    <h1>{{ 'organization.management.speaker.list' | trans }}</h1>
+    <h1>{{ 'organization.management.helper.list' | trans }}</h1>
     <p>
-        <a href="{{ path('speaker_new') }}" class="btn btn-primary">
+        <a href="{{ path('helper_new') }}" class="btn btn-primary">
             {{ 'button.create' | trans }}
         </a>
     </p>
@@ -12,12 +12,12 @@
         <thead>
             <tr>
                 <th>{{ 'list.number' | trans }}</th>
-                <th>{{ 'organization.management.speaker.name' | trans }}</th>
-                <th>{{ 'organization.management.speaker.lastName' | trans }}</th>
-                <th>{{ 'organization.management.speaker.email' | trans }}</th>
-                <th>{{ 'organization.management.speaker.phoneNumber' | trans }}</th>
-                <th>{{ 'organization.management.speaker.url' | trans }}</th>
+                <th>{{ 'organization.management.helper.name' | trans }}</th>
+                <th>{{ 'organization.management.helper.lastName' | trans }}</th>
+                <th>{{ 'organization.management.helper.email' | trans }}</th>
+                <th>{{ 'organization.management.helper.phoneNumber' | trans }}</th>
                 <th>&nbsp;</th>
+            </tr>
             </tr>
         </thead>
         <tbody>
@@ -28,14 +28,13 @@
                 <td>{{ entity.lastName }}</td>
                 <td>{{ entity.email }}</td>
                 <td>{{ entity.phoneNumber }}</td>
-                <td>{{ entity.url }}</td>
                 <td>
                 <ul>
                     <li>
-                        <a href="{{ path('speaker_show', { 'id': entity.id }) }}">{{ 'button.show' | trans }}</a>
+                        <a href="{{ path('helper_show', { 'id': entity.id }) }}">{{ 'button.show' | trans }}</a>
                     </li>
                     <li>
-                        <a href="{{ path('speaker_edit', { 'id': entity.id }) }}">{{ 'button.edit' | trans }}</a>
+                        <a href="{{ path('helper_edit', { 'id': entity.id }) }}">{{ 'button.edit' | trans }}</a>
                     </li>
                 </ul>
                 </td>

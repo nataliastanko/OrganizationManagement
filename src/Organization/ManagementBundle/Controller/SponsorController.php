@@ -7,21 +7,21 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
-use Organization\ManagementBundle\Entity\City;
-use Organization\ManagementBundle\Form\CityType;
+use Organization\ManagementBundle\Entity\Sponsor;
+use Organization\ManagementBundle\Form\SponsorType;
 
 /**
- * City controller.
+ * Sponsor controller.
  *
- * @Route("/city")
+ * @Route("/sponsor")
  */
-class CityController extends Controller
+class SponsorController extends Controller
 {
 
     /**
-     * Lists all City entities.
+     * Lists all Sponsor entities.
      *
-     * @Route("/", name="city")
+     * @Route("/", name="sponsor")
      * @Method("GET")
      * @Template()
      */
@@ -29,22 +29,22 @@ class CityController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entities = $em->getRepository('OrganizationManagementBundle:City')->findAll();
+        $entities = $em->getRepository('OrganizationManagementBundle:Sponsor')->findAll();
 
         return array(
             'entities' => $entities,
         );
     }
     /**
-     * Creates a new City entity.
+     * Creates a new Sponsor entity.
      *
-     * @Route("/", name="city_create")
+     * @Route("/", name="sponsor_create")
      * @Method("POST")
-     * @Template("OrganizationManagementBundle:City:new.html.twig")
+     * @Template("OrganizationManagementBundle:Sponsor:new.html.twig")
      */
     public function createAction(Request $request)
     {
-        $entity = new City();
+        $entity = new Sponsor();
         $form = $this->createCreateForm($entity);
         $form->handleRequest($request);
 
@@ -53,7 +53,7 @@ class CityController extends Controller
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('city_show', array('id' => $entity->getId())));
+            return $this->redirect($this->generateUrl('sponsor_show', array('id' => $entity->getId())));
         }
 
         return array(
@@ -63,17 +63,18 @@ class CityController extends Controller
     }
 
     /**
-     * Creates a form to create a City entity.
+     * Creates a form to create a Sponsor entity.
      *
-     * @param City $entity The entity
+     * @param Sponsor $entity The entity
      *
      * @return \Symfony\Component\Form\Form The form
      */
-    private function createCreateForm(City $entity)
+    private function createCreateForm(Sponsor $entity)
     {
-        $form = $this->createForm(new CityType(), $entity, array(
-            'action' => $this->generateUrl('city_create'),
+        $form = $this->createForm(new SponsorType(), $entity, array(
+            'action' => $this->generateUrl('sponsor_create'),
             'method' => 'POST',
+            // 'validation_groups' => array(''),
         ));
 
         $form->add('submit', 'submit', array('label' => 'button.create'));
@@ -82,15 +83,15 @@ class CityController extends Controller
     }
 
     /**
-     * Displays a form to create a new City entity.
+     * Displays a form to create a new Sponsor entity.
      *
-     * @Route("/new", name="city_new")
+     * @Route("/new", name="sponsor_new")
      * @Method("GET")
      * @Template()
      */
     public function newAction()
     {
-        $entity = new City();
+        $entity = new Sponsor();
         $form   = $this->createCreateForm($entity);
 
         return array(
@@ -100,9 +101,9 @@ class CityController extends Controller
     }
 
     /**
-     * Finds and displays a City entity.
+     * Finds and displays a Sponsor entity.
      *
-     * @Route("/{id}", name="city_show")
+     * @Route("/{id}", name="sponsor_show")
      * @Method("GET")
      * @Template()
      */
@@ -110,10 +111,10 @@ class CityController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('OrganizationManagementBundle:City')->find($id);
+        $entity = $em->getRepository('OrganizationManagementBundle:Sponsor')->find($id);
 
         if (!$entity) {
-            throw $this->createNotFoundException('Unable to find City entity.');
+            throw $this->createNotFoundException('Unable to find Sponsor entity.');
         }
 
         $deleteForm = $this->createDeleteForm($id);
@@ -125,9 +126,9 @@ class CityController extends Controller
     }
 
     /**
-     * Displays a form to edit an existing City entity.
+     * Displays a form to edit an existing Sponsor entity.
      *
-     * @Route("/{id}/edit", name="city_edit")
+     * @Route("/{id}/edit", name="sponsor_edit")
      * @Method("GET")
      * @Template()
      */
@@ -135,10 +136,10 @@ class CityController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('OrganizationManagementBundle:City')->find($id);
+        $entity = $em->getRepository('OrganizationManagementBundle:Sponsor')->find($id);
 
         if (!$entity) {
-            throw $this->createNotFoundException('Unable to find City entity.');
+            throw $this->createNotFoundException('Unable to find Sponsor entity.');
         }
 
         $editForm = $this->createEditForm($entity);
@@ -146,22 +147,22 @@ class CityController extends Controller
 
         return array(
             'entity'      => $entity,
-            'edit_form'   => $editForm->createView(),
+            'form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
         );
     }
 
     /**
-    * Creates a form to edit a City entity.
+    * Creates a form to edit a Sponsor entity.
     *
-    * @param City $entity The entity
+    * @param Sponsor $entity The entity
     *
     * @return \Symfony\Component\Form\Form The form
     */
-    private function createEditForm(City $entity)
+    private function createEditForm(Sponsor $entity)
     {
-        $form = $this->createForm(new CityType(), $entity, array(
-            'action' => $this->generateUrl('city_update', array('id' => $entity->getId())),
+        $form = $this->createForm(new SponsorType(), $entity, array(
+            'action' => $this->generateUrl('sponsor_update', array('id' => $entity->getId())),
             'method' => 'PUT',
         ));
 
@@ -170,20 +171,20 @@ class CityController extends Controller
         return $form;
     }
     /**
-     * Edits an existing City entity.
+     * Edits an existing Sponsor entity.
      *
-     * @Route("/{id}", name="city_update")
+     * @Route("/{id}", name="sponsor_update")
      * @Method("PUT")
-     * @Template("OrganizationManagementBundle:City:edit.html.twig")
+     * @Template("OrganizationManagementBundle:Sponsor:edit.html.twig")
      */
     public function updateAction(Request $request, $id)
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('OrganizationManagementBundle:City')->find($id);
+        $entity = $em->getRepository('OrganizationManagementBundle:Sponsor')->find($id);
 
         if (!$entity) {
-            throw $this->createNotFoundException('Unable to find City entity.');
+            throw $this->createNotFoundException('Unable to find Sponsor entity.');
         }
 
         $deleteForm = $this->createDeleteForm($id);
@@ -193,19 +194,19 @@ class CityController extends Controller
         if ($editForm->isValid()) {
             $em->flush();
 
-            return $this->redirect($this->generateUrl('city_show', array('id' => $id)));
+            return $this->redirect($this->generateUrl('sponsor_show', array('id' => $id)));
         }
 
         return array(
             'entity'      => $entity,
-            'edit_form'   => $editForm->createView(),
+            'form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
         );
     }
     /**
-     * Deletes a City entity.
+     * Deletes a Sponsor entity.
      *
-     * @Route("/{id}", name="city_delete")
+     * @Route("/{id}", name="sponsor_delete")
      * @Method("DELETE")
      */
     public function deleteAction(Request $request, $id)
@@ -215,21 +216,21 @@ class CityController extends Controller
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $entity = $em->getRepository('OrganizationManagementBundle:City')->find($id);
+            $entity = $em->getRepository('OrganizationManagementBundle:Sponsor')->find($id);
 
             if (!$entity) {
-                throw $this->createNotFoundException('Unable to find City entity.');
+                throw $this->createNotFoundException('Unable to find Sponsor entity.');
             }
 
             $em->remove($entity);
             $em->flush();
         }
 
-        return $this->redirect($this->generateUrl('city'));
+        return $this->redirect($this->generateUrl('sponsor'));
     }
 
     /**
-     * Creates a form to delete a City entity by id.
+     * Creates a form to delete a Sponsor entity by id.
      *
      * @param mixed $id The entity id
      *
@@ -238,7 +239,7 @@ class CityController extends Controller
     private function createDeleteForm($id)
     {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('city_delete', array('id' => $id)))
+            ->setAction($this->generateUrl('sponsor_delete', array('id' => $id)))
             ->setMethod('DELETE')
             ->add('submit', 'submit', array('label' => 'Delete'))
             ->getForm()

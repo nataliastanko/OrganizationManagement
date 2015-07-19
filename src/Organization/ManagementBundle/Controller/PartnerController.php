@@ -7,21 +7,21 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
-use Organization\ManagementBundle\Entity\City;
-use Organization\ManagementBundle\Form\CityType;
+use Organization\ManagementBundle\Entity\Partner;
+use Organization\ManagementBundle\Form\PartnerType;
 
 /**
- * City controller.
+ * Partner controller.
  *
- * @Route("/city")
+ * @Route("/partner")
  */
-class CityController extends Controller
+class PartnerController extends Controller
 {
 
     /**
-     * Lists all City entities.
+     * Lists all Partner entities.
      *
-     * @Route("/", name="city")
+     * @Route("/", name="partner")
      * @Method("GET")
      * @Template()
      */
@@ -29,22 +29,22 @@ class CityController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entities = $em->getRepository('OrganizationManagementBundle:City')->findAll();
+        $entities = $em->getRepository('OrganizationManagementBundle:Partner')->findAll();
 
         return array(
             'entities' => $entities,
         );
     }
     /**
-     * Creates a new City entity.
+     * Creates a new Partner entity.
      *
-     * @Route("/", name="city_create")
+     * @Route("/", name="partner_create")
      * @Method("POST")
-     * @Template("OrganizationManagementBundle:City:new.html.twig")
+     * @Template("OrganizationManagementBundle:Partner:new.html.twig")
      */
     public function createAction(Request $request)
     {
-        $entity = new City();
+        $entity = new Partner();
         $form = $this->createCreateForm($entity);
         $form->handleRequest($request);
 
@@ -53,7 +53,7 @@ class CityController extends Controller
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('city_show', array('id' => $entity->getId())));
+            return $this->redirect($this->generateUrl('partner_show', array('id' => $entity->getId())));
         }
 
         return array(
@@ -63,16 +63,16 @@ class CityController extends Controller
     }
 
     /**
-     * Creates a form to create a City entity.
+     * Creates a form to create a Partner entity.
      *
-     * @param City $entity The entity
+     * @param Partner $entity The entity
      *
      * @return \Symfony\Component\Form\Form The form
      */
-    private function createCreateForm(City $entity)
+    private function createCreateForm(Partner $entity)
     {
-        $form = $this->createForm(new CityType(), $entity, array(
-            'action' => $this->generateUrl('city_create'),
+        $form = $this->createForm(new PartnerType(), $entity, array(
+            'action' => $this->generateUrl('partner_create'),
             'method' => 'POST',
         ));
 
@@ -82,15 +82,15 @@ class CityController extends Controller
     }
 
     /**
-     * Displays a form to create a new City entity.
+     * Displays a form to create a new Partner entity.
      *
-     * @Route("/new", name="city_new")
+     * @Route("/new", name="partner_new")
      * @Method("GET")
      * @Template()
      */
     public function newAction()
     {
-        $entity = new City();
+        $entity = new Partner();
         $form   = $this->createCreateForm($entity);
 
         return array(
@@ -100,9 +100,9 @@ class CityController extends Controller
     }
 
     /**
-     * Finds and displays a City entity.
+     * Finds and displays a Partner entity.
      *
-     * @Route("/{id}", name="city_show")
+     * @Route("/{id}", name="partner_show")
      * @Method("GET")
      * @Template()
      */
@@ -110,10 +110,10 @@ class CityController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('OrganizationManagementBundle:City')->find($id);
+        $entity = $em->getRepository('OrganizationManagementBundle:Partner')->find($id);
 
         if (!$entity) {
-            throw $this->createNotFoundException('Unable to find City entity.');
+            throw $this->createNotFoundException('Unable to find Partner entity.');
         }
 
         $deleteForm = $this->createDeleteForm($id);
@@ -125,9 +125,9 @@ class CityController extends Controller
     }
 
     /**
-     * Displays a form to edit an existing City entity.
+     * Displays a form to edit an existing Partner entity.
      *
-     * @Route("/{id}/edit", name="city_edit")
+     * @Route("/{id}/edit", name="partner_edit")
      * @Method("GET")
      * @Template()
      */
@@ -135,10 +135,10 @@ class CityController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('OrganizationManagementBundle:City')->find($id);
+        $entity = $em->getRepository('OrganizationManagementBundle:Partner')->find($id);
 
         if (!$entity) {
-            throw $this->createNotFoundException('Unable to find City entity.');
+            throw $this->createNotFoundException('Unable to find Partner entity.');
         }
 
         $editForm = $this->createEditForm($entity);
@@ -152,16 +152,16 @@ class CityController extends Controller
     }
 
     /**
-    * Creates a form to edit a City entity.
+    * Creates a form to edit a Partner entity.
     *
-    * @param City $entity The entity
+    * @param Partner $entity The entity
     *
     * @return \Symfony\Component\Form\Form The form
     */
-    private function createEditForm(City $entity)
+    private function createEditForm(Partner $entity)
     {
-        $form = $this->createForm(new CityType(), $entity, array(
-            'action' => $this->generateUrl('city_update', array('id' => $entity->getId())),
+        $form = $this->createForm(new PartnerType(), $entity, array(
+            'action' => $this->generateUrl('partner_update', array('id' => $entity->getId())),
             'method' => 'PUT',
         ));
 
@@ -170,20 +170,20 @@ class CityController extends Controller
         return $form;
     }
     /**
-     * Edits an existing City entity.
+     * Edits an existing Partner entity.
      *
-     * @Route("/{id}", name="city_update")
+     * @Route("/{id}", name="partner_update")
      * @Method("PUT")
-     * @Template("OrganizationManagementBundle:City:edit.html.twig")
+     * @Template("OrganizationManagementBundle:Partner:edit.html.twig")
      */
     public function updateAction(Request $request, $id)
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('OrganizationManagementBundle:City')->find($id);
+        $entity = $em->getRepository('OrganizationManagementBundle:Partner')->find($id);
 
         if (!$entity) {
-            throw $this->createNotFoundException('Unable to find City entity.');
+            throw $this->createNotFoundException('Unable to find Partner entity.');
         }
 
         $deleteForm = $this->createDeleteForm($id);
@@ -193,7 +193,7 @@ class CityController extends Controller
         if ($editForm->isValid()) {
             $em->flush();
 
-            return $this->redirect($this->generateUrl('city_show', array('id' => $id)));
+            return $this->redirect($this->generateUrl('partner_show', array('id' => $id)));
         }
 
         return array(
@@ -203,9 +203,9 @@ class CityController extends Controller
         );
     }
     /**
-     * Deletes a City entity.
+     * Deletes a Partner entity.
      *
-     * @Route("/{id}", name="city_delete")
+     * @Route("/{id}", name="partner_delete")
      * @Method("DELETE")
      */
     public function deleteAction(Request $request, $id)
@@ -215,21 +215,21 @@ class CityController extends Controller
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $entity = $em->getRepository('OrganizationManagementBundle:City')->find($id);
+            $entity = $em->getRepository('OrganizationManagementBundle:Partner')->find($id);
 
             if (!$entity) {
-                throw $this->createNotFoundException('Unable to find City entity.');
+                throw $this->createNotFoundException('Unable to find Partner entity.');
             }
 
             $em->remove($entity);
             $em->flush();
         }
 
-        return $this->redirect($this->generateUrl('city'));
+        return $this->redirect($this->generateUrl('partner'));
     }
 
     /**
-     * Creates a form to delete a City entity by id.
+     * Creates a form to delete a Partner entity by id.
      *
      * @param mixed $id The entity id
      *
@@ -238,7 +238,7 @@ class CityController extends Controller
     private function createDeleteForm($id)
     {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('city_delete', array('id' => $id)))
+            ->setAction($this->generateUrl('partner_delete', array('id' => $id)))
             ->setMethod('DELETE')
             ->add('submit', 'submit', array('label' => 'Delete'))
             ->getForm()

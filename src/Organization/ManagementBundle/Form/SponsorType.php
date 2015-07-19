@@ -6,7 +6,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-class SpeakerType extends AbstractType
+class SponsorType extends AbstractType
 {
     /**
      * @param FormBuilderInterface $builder
@@ -18,38 +18,37 @@ class SpeakerType extends AbstractType
             ->add('name', 'text',
                 [
                 'required' => true,
-                'label' => 'organization.management.speaker.name'
-                ]
-            )
-            ->add('url', 'url',
-                [
-                'required' => false,
-                'label' => 'organization.management.speaker.url'
-                ]
-            )
-            ->add('lastName', 'text',
-                [
-                'required' => true,
-                'label' => 'organization.management.speaker.lastName'
-                ]
-            )
-            ->add('bio', 'textarea',
-                [
-                'required' => false,
-                'label' => 'organization.management.speaker.bio'
-                ]
-            )
-            // ->add('photo')
-            ->add('phoneNumber', 'text',
-                [
-                'required' => false,
-                'label' => 'organization.management.speaker.phoneNumber'
+                'label' => 'organization.management.sponsor.name'
                 ]
             )
             ->add('email', 'email',
                 [
                 'required' => false,
-                'label' => 'organization.management.speaker.email'
+                'label' => 'organization.management.sponsor.email'
+                ]
+            )
+            ->add('url', 'url',
+                [
+                'required' => true,
+                'label' => 'organization.management.sponsor.url'
+                ]
+            )
+            ->add('phoneNumber', 'text',
+                [
+                'required' => false,
+                'label' => 'organization.management.sponsor.phoneNumber'
+                ]
+            )
+            ->add('description', 'textarea',
+                [
+                'required' => false,
+                'label' => 'organization.management.sponsor.description'
+                ]
+            )
+            ->add('resources', 'textarea',
+                [
+                'required' => false,
+                'label' => 'organization.management.sponsor.resources'
                 ]
             )
         ;
@@ -61,7 +60,7 @@ class SpeakerType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'Organization\ManagementBundle\Entity\Speaker'
+            'data_class' => 'Organization\ManagementBundle\Entity\Sponsor'
         ));
     }
 
@@ -70,6 +69,6 @@ class SpeakerType extends AbstractType
      */
     public function getName()
     {
-        return 'speaker';
+        return 'organization_managementbundle_sponsor';
     }
 }

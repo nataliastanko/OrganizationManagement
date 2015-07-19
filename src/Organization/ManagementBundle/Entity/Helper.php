@@ -1,6 +1,9 @@
 <?php
 
-namespace Organization\UserBundle\Entity;
+namespace Organization\ManagementBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -9,29 +12,29 @@ use Gedmo\Timestampable\Traits\TimestampableEntity;
 use Gedmo\Blameable\Traits\BlameableEntity;
 use Gedmo\Mapping\Annotation as Gedmo;
 
-use FOS\UserBundle\Model\User as BaseUser;
-
-use Doctrine\ORM\Mapping as ORM;
-
 use Organization\ManagementBundle\Entity\City;
 
 /**
+ * Helper
+ *
+ * @ORM\Table(name="helpers")
  * @ORM\Entity
- * @ORM\Table(name="users")
  * @Gedmo\Loggable
  * @Gedmo\SoftDeleteable(fieldName="deletedAt", timeAware=false)
- * @UniqueEntity(fields="email", message="error.user.email.taken")
- * UniqueEntity(fields="url", message="error.user.url.taken")
- * @UniqueEntity(fields="phoneNumber", message="error.user.phoneNumber.taken")
+ * @UniqueEntity(fields="email", message="error.helper.name.taken")
+ * UniqueEntity(fields="url", message="error.helper.url.taken")
+ * @UniqueEntity(fields="phoneNumber", message="error.helper.phoneNumber.taken")
  */
-class User extends BaseUser
+class Helper
 {
     /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
      * @ORM\Id
-     * @ORM\Column(type="integer")
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    protected $id;
+    private $id;
 
     /**
      * Hook timestampable behavior
@@ -52,15 +55,15 @@ class User extends BaseUser
 
     /**
      * @var string
-     * @Assert\NotBlank(message = "error.user.name.not_blank", groups={"settings"})
-     * @ORM\Column(name="name", type="string", length=100, nullable=true)
+     * @Gedmo\Versioned
+     * @ORM\Column(name="name", type="string", length=255)
      */
     private $name;
 
     /**
      * @var string
-     * @Assert\NotBlank(message = "error.user.last_name.not_blank", groups={"settings"})
-     * @ORM\Column(name="last_name", type="string", length=100, nullable=true)
+     * @Gedmo\Versioned
+     * @ORM\Column(name="last_name", type="string", length=255)
      */
     private $lastName;
 
@@ -78,36 +81,66 @@ class User extends BaseUser
 
     /**
      * @var string
-     *
-     * @Assert\NotBlank(message = "error.user.phone_number.not_blank", groups={"settings"})
+     * @Gedmo\Versioned
+     * Assert\NotBlank(message = "error.user.phone_number.not_blank", groups={"settings"})
      * Assert\Regex(
      *  pattern= "/([0-9\-\+\s])?/",
      *  match = true,
      *  message = "error.user.phone_number.regex_not_match",
      *  groups={"settings"}
      * )
-     * @ORM\Column(name="phone_number", type="string", nullable=true, nullable=true)
-     *
+     * @ORM\Column(name="phone_number", type="string", length=255, nullable=true)
      */
-    protected $phoneNumber;
+    private $phoneNumber;
+
+    /**
+     *
+     * @var string $email
+     * @Gedmo\Versioned
+     * @ORM\Column(name="email", type="string", length=255, nullable=true)
+     * @Assert\Email(message = "error.user.email.email_not_match", groups={"settings"})
+     */
+    protected $email;
+
+    /**
+     * @var string
+     * @Gedmo\Versioned
+     * @ORM\Column(name="description", type="text", nullable=true)
+     */
+    private $description;
 
     /**
      * @Gedmo\Versioned
-     * @ORM\ManyToOne(targetEntity="Organization\ManagementBundle\Entity\City", inversedBy="users")
+     * @ORM\ManyToOne(targetEntity="City", inversedBy="helpers")
      * @ORM\JoinColumn(name="city_id", referencedColumnName="id")
      **/
     private $city;
 
-    public function __construct()
+    /**
+     * @ORM\ManyToMany(targetEntity="City", inversedBy="helpers")
+     * @ORM\JoinTable(name="helpers_city")
+     **/
+    private $cities;
+
+    public function __construct() {
+        $this->cities = new ArrayCollection();
+    }
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
     {
-        parent::__construct();
+        return $this->id;
     }
 
     /**
      * Set name
      *
      * @param string $name
-     * @return User
+     * @return Helper
      */
     public function setName($name)
     {
@@ -127,10 +160,10 @@ class User extends BaseUser
     }
 
     /**
-     * Set last name
+     * Set lastName
      *
      * @param string $lastName
-     * @return User
+     * @return Helper
      */
     public function setLastName($lastName)
     {
@@ -140,7 +173,7 @@ class User extends BaseUser
     }
 
     /**
-     * Get last name
+     * Get lastName
      *
      * @return string
      */
@@ -150,10 +183,33 @@ class User extends BaseUser
     }
 
     /**
+     * Set description
+     *
+     * @param string $description
+     * @return Helper
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * Get description
+     *
+     * @return string
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    /**
      * Set phoneNumber
      *
      * @param string $phoneNumber
-     * @return User
+     * @return Helper
      */
     public function setPhoneNumber($phoneNumber)
     {
@@ -173,10 +229,31 @@ class User extends BaseUser
     }
 
     /**
+     * Set email
+     *
+     * @param string  $email
+     * @return Helper
+     */
+    public function setEmail( $email ) {
+        $this->email = $email;
+
+        return $this;
+    }
+
+    /**
+     * Get email
+     *
+     * @return string
+     */
+    public function getEmail() {
+        return $this->email;
+    }
+
+    /**
      * Set url
      *
      * @param string $resources
-     * @return User
+     * @return Helper
      */
     public function setUrl($url)
     {
@@ -196,26 +273,19 @@ class User extends BaseUser
     }
 
     /**
-     * Set resources
+     * Get cities
      *
-     * @param string $city
-     * @return Partner
+     * @return array
      */
-    public function setCity(City $city)
+    public function getCities()
     {
-        $this->city = $city;
-
-        return $this;
+        return $this->cities;
     }
 
-    /**
-     * Get city
-     *
-     * @return City
-     */
-    public function getCity()
+    public function addCity(City $city)
     {
-        return $this->city;
+        $tag->addCity($this); // synchronously updating inverse side
+        $this->cities[] = $city;
     }
 
 }
