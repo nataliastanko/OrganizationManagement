@@ -3,6 +3,8 @@
 namespace Organization\LogBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Request;
+
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
@@ -19,18 +21,28 @@ class LogController extends Controller
      * @Route("/", name="log")
      * @Template()
      */
-    public function indexAction()
+    public function indexAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
         // $repo = $em->getRepository('Gedmo\Loggable\Entity\LogEntry');
         $repo = $em->getRepository('GedmoLoggable:LogEntry');
 
-        $logs = $em->getRepository('GedmoLoggable:LogEntry')
-            ->findBy([], ['id' => 'desc']);
+        // $logs = $em->getRepository('GedmoLoggable:LogEntry')
+        // ->findBy([], ['id' => 'desc']);
+
+        $dql   = "SELECT l FROM GedmoLoggable:LogEntry l ORDER BY l.id DESC";
+        $logsQuery = $em->createQuery($dql);
+
+        $paginator  = $this->get('knp_paginator');
+        $pagination = $paginator->paginate(
+            $logsQuery,
+            $request->query->getInt('page', 1) /*page number*/,
+            5 /*limit per page*/
+        );
 
         // $logs = $repo->findAll();
 
-        return ['logs' => $logs];
+        return ['pagination' => $pagination];
     }
 
     /**
