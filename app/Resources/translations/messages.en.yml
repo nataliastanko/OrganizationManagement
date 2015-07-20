@@ -31,5 +31,7 @@ button:
     create: "create"
     add: "add"
     delete: "delete"
+    enable: "enable"
+    disable: "disable"
 list:
     number: "Number"

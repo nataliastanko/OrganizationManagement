@@ -31,5 +31,7 @@ button:
     create: "dodaj"
     add: "dodaj"
     delete: "usuń"
+    enable: "aktywuj"
+    disable: "wyłącz logowanie"
 list:
     number: "Kolejna liczba"

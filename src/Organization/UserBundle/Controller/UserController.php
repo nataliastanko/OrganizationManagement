@@ -183,4 +183,34 @@ class UserController extends Controller
             ->getForm()
         ;
     }
+
+    /**
+     * Set enabled param for user
+     *
+     * @Route("/enabled/{id}/{enabled}", name="user_enabled")
+     * @Method("GET")
+     * @Template()
+     */
+    public function enableAction($id, $enabled)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $entity = $em->getRepository('OrganizationUserBundle:User')->find($id);
+
+        if (!$entity) {
+            throw $this->createNotFoundException('Unable to find User entity.');
+        }
+
+        if ($enabled) {
+            $entity->setEnabled(true);
+        } else {
+            $entity->setEnabled(false);
+        }
+
+        $em->persist($entity);
+        $em->flush();
+        return $this->redirect($this->generateUrl('user'));
+
+    }
+
 }

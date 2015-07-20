@@ -33,6 +33,17 @@
                     <li>
                         <a href="{{ path('user_edit', { 'id': entity.id }) }}">{{ 'button.edit' | trans }}</a>
                     </li>
+                    {% if is_granted('ROLE_ADMIN') and app.user.id != entity.id %}
+                        {% if entity.enabled %}
+                            <li>
+                                <a href="{{ path('user_enabled', { 'id': entity.id, 'enabled': 0 }) }}">{{ 'button.disable' | trans }}</a>
+                            </li>
+                        {% else %}
+                            <li>
+                                <a href="{{ path('user_enabled', { 'id': entity.id, 'enabled': 1 }) }}">{{ 'button.enable' | trans }}</a>
+                            </li>
+                        {% endif %}
+                    {% endif %}
                 </ul>
                 </td>
             </tr>
