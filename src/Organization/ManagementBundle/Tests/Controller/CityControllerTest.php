@@ -19,7 +19,7 @@ class CityControllerTest extends WebTestCase
 
         // Fill in the form and submit it
         $form = $crawler->selectButton('Create')->form(array(
-            'management_meetingbundle_city[field_name]'  => 'Test',
+            'organization_managementbundle_city[field_name]'  => 'Test',
             // ... other fields to fill
         ));
 
@@ -33,7 +33,7 @@ class CityControllerTest extends WebTestCase
         $crawler = $client->click($crawler->selectLink('Edit')->link());
 
         $form = $crawler->selectButton('Update')->form(array(
-            'management_meetingbundle_city[field_name]'  => 'Foo',
+            'organization_managementbundle_city[field_name]'  => 'Foo',
             // ... other fields to fill
         ));
 
