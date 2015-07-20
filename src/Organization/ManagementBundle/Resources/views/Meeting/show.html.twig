@@ -1,7 +1,15 @@
 {% extends '::base.html.twig' %}
 
 {% block body -%}
-    <h1>{{ 'organization.management.meeting.details' | trans }}</h1>
+
+    <div class="header">
+        <h1>{{ 'organization.management.meeting.details' | trans }}</h1>
+        <div class="button-back">
+             <a class="btn btn-default" href="{{ path('meeting') }}">
+                {{ 'button.back' | trans }}
+            </a>
+        </div>
+    </div>
 
     <table class="table table-hover">
         <tbody>
@@ -42,8 +50,12 @@
                 </td>
             </tr>
             <tr>
+                <th>{{ 'organization.management.meeting.facebookUrl' | trans }}</th>
+                <td><a href="{{ entity.facebookUrl }}">{{ entity.facebookUrl }}</a></td>
+            </tr>
+            <tr>
                 <th>{{ 'organization.management.meeting.ticketsUrl' | trans }}</th>
-                <td>{{ entity.ticketsUrl }}</td>
+                <td><a href="{{ entity.ticketsUrl }}">{{ entity.ticketsUrl }}</a></td>
             </tr>
         </tbody>
     </table>

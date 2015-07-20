@@ -84,6 +84,20 @@ class Speaker
     /**
      * @var string
      * @Gedmo\Versioned
+     * @Assert\Url(
+     *    message = "error.url.not_match",
+     *    protocols = {"http", "https"},
+     *    checkDNS = true,
+     *    groups={"settings"}
+     * )
+     * @ORM\Column(name="facebook_url", type="string", length=255, nullable=true)
+     */
+    private $facebookUrl;
+
+
+    /**
+     * @var string
+     * @Gedmo\Versioned
      * @ORM\Column(name="bio", type="text", nullable=true)
      */
     private $bio;
@@ -227,6 +241,29 @@ class Speaker
     public function getPhoto()
     {
         return $this->photo;
+    }
+
+    /**
+     * Set facebookUrl
+     *
+     * @param string $url
+     * @return Place
+     */
+    public function setFacebookUrl($url)
+    {
+        $this->facebookUrl = $url;
+
+        return $this;
+    }
+
+    /**
+     * Get facebookUrl
+     *
+     * @return string
+     */
+    public function getFacebookUrl()
+    {
+        return $this->facebookUrl;
     }
 
     /**

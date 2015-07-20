@@ -51,10 +51,28 @@ class Meeting
 
     /**
      * @var string
-     *
+     * @Assert\Url(
+     *    message = "error.url.not_match",
+     *    protocols = {"http", "https"},
+     *    checkDNS = true,
+     *    groups={"settings"}
+     * )
      * @ORM\Column(name="tickets_url", type="string", length=255, nullable=true)
      */
     private $ticketsUrl;
+
+    /**
+     * @var string
+     * @Gedmo\Versioned
+     * @Assert\Url(
+     *    message = "error.url.not_match",
+     *    protocols = {"http", "https"},
+     *    checkDNS = true,
+     *    groups={"settings"}
+     * )
+     * @ORM\Column(name="facebook_url", type="string", length=255, nullable=true)
+     */
+    private $facebookUrl;
 
     /**
      * @Gedmo\Versioned
@@ -165,6 +183,29 @@ class Meeting
     public function getTicketsUrl()
     {
         return $this->ticketsUrl;
+    }
+
+    /**
+     * Set facebookUrl
+     *
+     * @param string $url
+     * @return Place
+     */
+    public function setFacebookUrl($url)
+    {
+        $this->facebookUrl = $url;
+
+        return $this;
+    }
+
+    /**
+     * Get facebookUrl
+     *
+     * @return string
+     */
+    public function getFacebookUrl()
+    {
+        return $this->facebookUrl;
     }
 
     /**

@@ -29,6 +29,12 @@ class SpeakerType extends AbstractType
                 'label' => 'organization.management.speaker.url'
                 ]
             )
+            ->add('facebookUrl', 'url',
+                [
+                'required' => false,
+                'label' => 'organization.management.speaker.facebookUrl'
+                ]
+            )
             ->add('lastName', 'text',
                 [
                 'required' => true,

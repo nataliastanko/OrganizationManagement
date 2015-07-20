@@ -3,7 +3,7 @@
 {% block body -%}
     <h1>{{ 'organization.management.place.list' | trans }}</h1>
     <p>
-        <a href="{{ path('place_new') }}" class="btn btn-primary">
+        <a href="{{ path('place_new') }}" class="btn btn-default">
             {{ 'button.create' | trans }}
         </a>
     </p>
@@ -13,10 +13,10 @@
             <thead>
                 <tr>
                     <th>{{ 'list.number' | trans }}</th>
+                    <th>{{ 'organization.management.place.city' | trans }}</th>
                     <th>{{ 'organization.management.place.name' | trans }}</th>
                     <th>{{ 'organization.management.place.email' | trans }}</th>
                     <th>{{ 'organization.management.place.phoneNumber' | trans }}</th>
-                    <th>{{ 'organization.management.place.url' | trans }}</th>
                     <th>&nbsp;</th>
                 </tr>
             </thead>
@@ -24,10 +24,10 @@
             {% for entity in entities %}
                 <tr>
                     <td>{{ loop.index }}</td>
+                    <td>{{ entity.city.name }}</td>
                     <td>{{ entity.name }}</td>
                     <td>{{ entity.email }}</td>
                     <td>{{ entity.phoneNumber }}</td>
-                    <td><a href="{{ entity.url }}">{{ entity.url }}</a></td>
                     <td>
                     <ul>
                         <li>

@@ -31,6 +31,12 @@ class PartnerType extends AbstractType
                 'label' => 'organization.management.partner.url'
                 ]
             )
+            ->add('facebookUrl', 'url',
+                [
+                'required' => false,
+                'label' => 'organization.management.partner.facebookUrl'
+                ]
+            )
             ->add('email', 'email',
                 [
                 'required' => false,

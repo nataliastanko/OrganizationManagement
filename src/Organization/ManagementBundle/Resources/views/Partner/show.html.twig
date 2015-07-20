@@ -1,7 +1,14 @@
 {% extends '::base.html.twig' %}
 
 {% block body -%}
-    <h1>{{ 'organization.management.partner.details' | trans }}</h1>
+    <div class="header">
+        <h1>{{ 'organization.management.partner.details' | trans }}</h1>
+        <div class="button-back">
+             <a class="btn btn-default" href="{{ path('partner') }}">
+                {{ 'button.back' | trans }}
+            </a>
+        </div>
+    </div>
 
     <table class="table table-hover">
         <tbody>
@@ -20,6 +27,10 @@
             <tr>
                 <th>{{ 'organization.management.partner.url' | trans }}</th>
                 <td><a href="{{ entity.url }}">{{ entity.url }}</a></td>
+            </tr>
+            <tr>
+                <th>{{ 'organization.management.partner.facebookUrl' | trans }}</th>
+                <td><a href="{{ entity.facebookUrl }}">{{ entity.facebookUrl }}</a></td>
             </tr>
             <tr>
                 <th>{{ 'organization.management.partner.phoneNumber' | trans }}</th>
@@ -44,13 +55,14 @@
         </tbody>
     </table>
 
-    <div class="pull-left">
-         <a class="btn btn-default" href="{{ path('partner_edit', { 'id': entity.id }) }}">
-            {{ 'button.edit' | trans }}
-        </a>
+    <div class="clearfix">
+        <div class="pull-left">
+             <a class="btn btn-default" href="{{ path('partner_edit', { 'id': entity.id }) }}">
+                {{ 'button.edit' | trans }}
+            </a>
+        </div>
+        <div class="pull-right">
+            {{ form(delete_form) }}
+        </div>
     </div>
-    <div class="pull-right">
-        {{ form(delete_form) }}
-    </div>
-
 {% endblock %}

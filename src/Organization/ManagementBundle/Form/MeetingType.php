@@ -80,6 +80,12 @@ class MeetingType extends AbstractType
                 },
                 ]
             )
+            ->add('facebookUrl', 'url',
+                [
+                'required' => false,
+                'label' => 'organization.management.meeting.facebookUrl'
+                ]
+            )
             ->add('ticketsUrl', 'text',
                 [
                 'required' => false,

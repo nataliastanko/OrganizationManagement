@@ -33,8 +33,14 @@ class SponsorType extends AbstractType
             )
             ->add('url', 'url',
                 [
-                'required' => true,
+                'required' => false,
                 'label' => 'organization.management.sponsor.url'
+                ]
+            )
+            ->add('facebookUrl', 'url',
+                [
+                'required' => false,
+                'label' => 'organization.management.sponsor.facebookUrl'
                 ]
             )
             ->add('cities', 'entity',

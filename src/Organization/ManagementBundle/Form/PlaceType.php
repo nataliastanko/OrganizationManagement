@@ -39,6 +39,12 @@ class PlaceType extends AbstractType
                 'label' => 'organization.management.place.url'
                 ]
             )
+            ->add('facebookUrl', 'url',
+                [
+                'required' => false,
+                'label' => 'organization.management.place.facebookUrl'
+                ]
+            )
             ->add('email', 'email',
                 [
                 'required' => false,
