@@ -6,6 +6,8 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
+use Doctrine\ORM\EntityRepository;
+
 class HelperType extends AbstractType
 {
     /**
@@ -25,6 +27,21 @@ class HelperType extends AbstractType
                 [
                 'required' => true,
                 'label' => 'organization.management.helper.lastName'
+                ]
+            )
+            ->add('cities', 'entity',
+                [
+                'required' => true,
+                'label' => 'organization.management.helper.cities',
+                'class' => 'OrganizationManagementBundle:City',
+                // 'class' => 'Organization\ManagementBundle\Entity\City',
+                'property' => 'name',
+                'expanded' => true,
+                'multiple' => true,
+                'query_builder' => function(EntityRepository $er) { // optional
+                    return $er->createQueryBuilder('u')
+                        ->orderBy('u.name', 'ASC');
+                },
                 ]
             )
             ->add('url', 'url',

@@ -33,6 +33,12 @@ class UserType extends AbstractType
                 'label' => 'user.phoneNumber'
                 ]
             )
+            ->add('url', 'url',
+                [
+                'required' => true,
+                'label' => 'user.url'
+                ]
+            )
         ;
     }
 

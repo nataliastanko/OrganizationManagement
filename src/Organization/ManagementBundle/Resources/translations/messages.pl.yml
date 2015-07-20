@@ -20,6 +20,7 @@ organization:
             add: "Dodawanie nowego tematu"
         city:
             name: "Miasto"
+            email: "Email"
             list: "Lista miast"
             details: "Miasto"
             edit: "Edycja miasta"
@@ -35,6 +36,7 @@ organization:
             phoneNumber: "Numer telefonu"
             description: "Opis"
             resources: "Rodzaj pomocy"
+            cities: "Miasta, którym pomaga"
         partner:
             list: "Lista partnerów"
             details: "Partner"
@@ -46,6 +48,7 @@ organization:
             phoneNumber: "Numer telefonu"
             description: "Opis"
             resources: "Rodzaj pomocy"
+            cities: "Miasta, którym pomaga"
         helper:
             list: "Lista osób chętnych do pomocy"
             details: "Osoba chętna do pomocy"
@@ -57,3 +60,4 @@ organization:
             url: "Strona www (np. blog)"
             phoneNumber: "Numer telefonu"
             description: "Opis pomocy"
+            cities: "Miasta, którym może pomagać"

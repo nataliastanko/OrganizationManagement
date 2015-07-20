@@ -21,6 +21,13 @@ class CityType extends AbstractType
                 'label' => 'organization.management.city.name'
                 ]
             )
+            ->add('email', 'email',
+                [
+                'required' => true,
+                'label' => 'organization.management.city.email'
+                ]
+            )
+            ;
     }
 
     /**

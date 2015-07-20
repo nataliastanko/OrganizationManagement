@@ -30,6 +30,14 @@
                 <td>{{ entity.phoneNumber }}</td>
             </tr>
             <tr>
+                <th>{{ 'organization.management.helper.cities' | trans }}</th>
+                <td>
+                    {% for city in entity.cities %}
+                        <p>{{ city.name }}</p>
+                    {% endfor %}
+                </td>
+            </tr>
+            <tr>
                 <th>{{ 'organization.management.helper.description' | trans }}</th>
                 <td>{{ entity.description }}</td>
             </tr>

@@ -6,3 +6,4 @@ user:
     lastName: "Nazwisko"
     email: "Email"
     phoneNumber: "Numer telefonu"
+    url: "Strona www (np. blog)"

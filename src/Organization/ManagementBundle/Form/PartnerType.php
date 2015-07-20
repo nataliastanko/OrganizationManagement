@@ -6,6 +6,8 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
+use Doctrine\ORM\EntityRepository;
+
 class PartnerType extends AbstractType
 {
     /**
@@ -31,6 +33,21 @@ class PartnerType extends AbstractType
                 [
                 'required' => false,
                 'label' => 'organization.management.partner.email'
+                ]
+            )
+            ->add('cities', 'entity',
+                [
+                'required' => true,
+                'label' => 'organization.management.partner.cities',
+                'class' => 'OrganizationManagementBundle:City',
+                // 'class' => 'Organization\ManagementBundle\Entity\City',
+                'property' => 'name',
+                'expanded' => true,
+                'multiple' => true,
+                'query_builder' => function(EntityRepository $er) { // optional
+                    return $er->createQueryBuilder('u')
+                        ->orderBy('u.name', 'ASC');
+                },
                 ]
             )
             ->add('phoneNumber', 'text',

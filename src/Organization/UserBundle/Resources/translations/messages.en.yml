@@ -6,4 +6,4 @@ user:
     lastName: "Last name"
     email: "Email"
     phoneNumber: "Phone number"
-
+    url: "WWW (e.g. blog)"

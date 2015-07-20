@@ -16,6 +16,7 @@
                 <th>{{ 'organization.management.helper.lastName' | trans }}</th>
                 <th>{{ 'organization.management.helper.email' | trans }}</th>
                 <th>{{ 'organization.management.helper.phoneNumber' | trans }}</th>
+                <th>{{ 'organization.management.helper.url' | trans }}</th>
                 <th>&nbsp;</th>
             </tr>
             </tr>
@@ -28,6 +29,7 @@
                 <td>{{ entity.lastName }}</td>
                 <td>{{ entity.email }}</td>
                 <td>{{ entity.phoneNumber }}</td>
+                <td><a href="{{ entity.url }}">{{ entity.url }}</a></td>
                 <td>
                 <ul>
                     <li>

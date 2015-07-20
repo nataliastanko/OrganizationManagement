@@ -26,6 +26,14 @@
                 <td><a href="{{ entity.url }}">{{ entity.url }}</a></td>
             </tr>
             <tr>
+                <th>{{ 'organization.management.sponsor.cities' | trans }}</th>
+                <td>
+                    {% for city in entity.cities %}
+                        <p>{{ city.name }}</p>
+                    {% endfor %}
+                </td>
+            </tr>
+            <tr>
                 <th>{{ 'organization.management.sponsor.description' | trans }}</th>
                 <td>{{ entity.description }}</td>
             </tr>
