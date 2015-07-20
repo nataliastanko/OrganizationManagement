@@ -33,6 +33,12 @@ class UserType extends AbstractType
                 'label' => 'user.phoneNumber'
                 ]
             )
+            ->add('city', 'entity', [
+                'required' => true,
+                'class' => 'Organization\ManagementBundle\Entity\City',
+                'property' => 'name'
+                ]
+            )
             ->add('url', 'url',
                 [
                 'required' => true,

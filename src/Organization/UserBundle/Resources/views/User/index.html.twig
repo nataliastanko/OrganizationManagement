@@ -7,6 +7,7 @@
         <thead>
             <tr>
                 <th>{{ 'list.number' | trans }}</th>
+                <th>{{ 'user.city' | trans }}</th>
                 <th>{{ 'user.name' | trans }}</th>
                 <th>{{ 'user.lastName' | trans }}</th>
                 <th>{{ 'user.email' | trans }}</th>
@@ -18,6 +19,7 @@
         {% for i, entity in entities %}
             <tr>
                 <td>{{ loop.index }}</td>
+                <td>{{ entity.city.name }}</td>
                 <td>{{ entity.name }}</td>
                 <td>{{ entity.lastName }}</td>
                 <td>{{ entity.email }}</td>

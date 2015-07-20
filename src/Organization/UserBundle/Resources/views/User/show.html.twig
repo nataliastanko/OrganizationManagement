@@ -10,16 +10,20 @@
                 <td>{{ entity.id }}</td>
             </tr>
             <tr>
-                <th>{{ 'user.email' | trans }}</th>
-                <td>{{ entity.email }}</td>
-            </tr>
-            <tr>
                 <th>{{ 'user.name' | trans }}</th>
                 <td>{{ entity.name }}</td>
             </tr>
             <tr>
                 <th>{{ 'user.lastName' | trans }}</th>
                 <td>{{ entity.lastName }}</td>
+            </tr>
+            <tr>
+                <th>{{ 'user.city' | trans }}</th>
+                <td>{{ entity.city.name }}</td>
+            </tr>
+            <tr>
+                <th>{{ 'user.email' | trans }}</th>
+                <td>{{ entity.email }}</td>
             </tr>
             <tr>
                 <th>{{ 'user.phoneNumber' | trans }}</th>
