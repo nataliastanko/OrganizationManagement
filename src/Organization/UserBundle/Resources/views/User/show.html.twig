@@ -23,7 +23,7 @@
             </tr>
             <tr>
                 <th>{{ 'user.city' | trans }}</th>
-                <td>{{ entity.city.name }}</td>
+                <td>{% if entity.city %}{{ entity.city.name }}{% endif %}</td>
             </tr>
             <tr>
                 <th>{{ 'user.email' | trans }}</th>

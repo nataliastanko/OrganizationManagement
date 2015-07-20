@@ -1,0 +1,12 @@
+error:
+    user:
+        name:
+            notBlank: "Podaj swoje imię"
+        lastName:
+            notBlank: "Podaj swoje nazwisko"
+        phoneNumber:
+            taken: "Istnieje już użytkownik z takim numerem telefonu"
+        url:
+            taken: "Istnieje już użytkownik z taką stroną internetową"
+        email:
+            taken: "Istnieje już użytkownik z takim adresem email"

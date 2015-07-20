@@ -1,0 +1,12 @@
+error:
+    user:
+        name:
+            notBlank: "Please enter your name"
+        lastName:
+            notBlank: "Please enter your last name"
+        phoneNumber:
+            taken: "User with that phone number already exists"
+        url:
+            taken: "User with that webpage already exists"
+        email:
+            taken: "User with that email already exists"

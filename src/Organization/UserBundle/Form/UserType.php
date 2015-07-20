@@ -38,6 +38,8 @@ class UserType extends AbstractType
                 ]
             )
             ->add('city', 'entity', [
+                'label' => 'user.form.city.label',
+                'placeholder' => 'user.form.city.placeholder',
                 'required' => true,
                 'class' => 'Organization\ManagementBundle\Entity\City',
                 'property' => 'name'

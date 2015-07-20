@@ -7,5 +7,9 @@ user:
     email: "Email"
     phoneNumber: "Numer telefonu"
     url: "Strona www (np. blog)"
-    city: "Miasto"
     photo: "Zdjęcie"
+    city: "Miasto"
+    form:
+        city:
+            label: "Wybierz miasto"
+            placeholder: "Wybierz miasto"

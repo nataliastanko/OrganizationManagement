@@ -61,7 +61,7 @@ class User extends BaseUser
 
     /**
      * @var string
-     * @Assert\NotBlank(message = "error.user.last_name.notBlank", groups={"settings"})
+     * @Assert\NotBlank(message = "error.user.lastName.notBlank", groups={"settings"})
      * @ORM\Column(name="last_name", type="string", length=100, nullable=true)
      */
     private $lastName;

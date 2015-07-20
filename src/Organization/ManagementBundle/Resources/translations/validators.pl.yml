@@ -18,6 +18,10 @@ error:
         url:
             taken: "Istnieje już partner z taką stroną internetową"
     speaker:
+        name:
+            notBlank: "Podaj imię prelegenta"
+        lastName:
+            notBlank: "Podaj nazwisko prelegent"
         phoneNumber:
             taken: "Istnieje już prelegent z takim numerem telefonu"
         email:
@@ -25,6 +29,10 @@ error:
         url:
             taken: "Istnieje już prelegent z taką stroną internetową"
     helper:
+        name:
+            notBlank: "Podaj imię pomocnika"
+        lastName:
+            notBlank: "Podaj nazwisko pomocnika"
         phoneNumber:
             taken: "Istnieje już osoba z takim numerem telefonu"
         email:

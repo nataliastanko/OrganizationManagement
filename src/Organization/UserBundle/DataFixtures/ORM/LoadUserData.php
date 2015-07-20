@@ -18,7 +18,6 @@ class LoadUserData implements FixtureInterface
         $userAdmin->setUsername('nataliastanko');
         $userAdmin->setEmail('contact@nataliastanko.com');
         $userAdmin->setUrl('http://nataliastanko.com');
-        // $userAdmin->setCity();
 
         $userAdmin->setPlainPassword('123');
         $userAdmin->addRole('ROLE_ADMIN');
