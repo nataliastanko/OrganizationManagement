@@ -11,6 +11,8 @@ use Gedmo\Mapping\Annotation as Gedmo;
 
 use Doctrine\ORM\Mapping as ORM;
 
+use Misd\PhoneNumberBundle\Validator\Constraints\PhoneNumber as AssertPhoneNumber;
+
 /**
  * Speaker
  *
@@ -18,9 +20,9 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Entity
  * @Gedmo\Loggable
  * @Gedmo\SoftDeleteable(fieldName="deletedAt", timeAware=false)
- * @UniqueEntity(fields="email", message="error.speaker.name.taken")
- * @UniqueEntity(fields="url", message="error.speaker.url.taken")
- * @UniqueEntity(fields="phoneNumber", message="error.speaker.phoneNumber.taken")
+ * @UniqueEntity(fields="email", message="error.speaker.email.taken", groups={"settings"})
+ * @UniqueEntity(fields="url", message="error.speaker.url.taken", groups={"settings"})
+ * @UniqueEntity(fields="phoneNumber", message="error.speaker.phoneNumber.taken", groups={"settings"})
  */
 class Speaker
 {
@@ -94,14 +96,8 @@ class Speaker
     /**
      * @var string
      * @Gedmo\Versioned
-     * Assert\NotBlank(message = "error.user.phone_number.not_blank", groups={"settings"})
-     * Assert\Regex(
-     *  pattern= "/([0-9\-\+\s])?/",
-     *  match = true,
-     *  message = "error.user.phone_number.regex_not_match",
-     *  groups={"settings"}
-     * )
-     * @ORM\Column(name="phone_number", type="string", length=255, nullable=true)
+     * @AssertPhoneNumber(message = "error.phoneNumber.notMatch", groups={"settings"})
+     * @ORM\Column(name="phone_number", type="phone_number", nullable=true)
      */
     private $phoneNumber;
 
@@ -110,7 +106,7 @@ class Speaker
      * @var string $email
      * @Gedmo\Versioned
      * @ORM\Column(name="email", type="string", length=255, nullable=true)
-     * @Assert\Email(message = "error.user.email.email_not_match", groups={"settings"})
+     * @Assert\Email(message = "error.email.notMatch", groups={"settings"})
      */
     protected $email;
 

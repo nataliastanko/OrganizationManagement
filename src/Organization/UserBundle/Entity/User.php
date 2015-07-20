@@ -15,14 +15,16 @@ use Doctrine\ORM\Mapping as ORM;
 
 use Organization\ManagementBundle\Entity\City;
 
+use Misd\PhoneNumberBundle\Validator\Constraints\PhoneNumber as AssertPhoneNumber;
+
 /**
  * @ORM\Entity
  * @ORM\Table(name="users")
  * @Gedmo\Loggable
  * @Gedmo\SoftDeleteable(fieldName="deletedAt", timeAware=false)
- * @UniqueEntity(fields="email", message="error.user.email.taken")
- * UniqueEntity(fields="url", message="error.user.url.taken")
- * @UniqueEntity(fields="phoneNumber", message="error.user.phoneNumber.taken")
+ * @UniqueEntity(fields="email", message="error.user.email.taken", groups={"settings"})
+ * @UniqueEntity(fields="url", message="error.user.url.taken", groups={"settings"})
+ * @UniqueEntity(fields="phoneNumber", message="error.user.phoneNumber.taken", groups={"settings"})
  */
 class User extends BaseUser
 {
@@ -52,14 +54,14 @@ class User extends BaseUser
 
     /**
      * @var string
-     * @Assert\NotBlank(message = "error.user.name.not_blank", groups={"settings"})
+     * @Assert\NotBlank(message = "error.user.name.notBlank", groups={"settings"})
      * @ORM\Column(name="name", type="string", length=100, nullable=true)
      */
     private $name;
 
     /**
      * @var string
-     * @Assert\NotBlank(message = "error.user.last_name.not_blank", groups={"settings"})
+     * @Assert\NotBlank(message = "error.user.last_name.notBlank", groups={"settings"})
      * @ORM\Column(name="last_name", type="string", length=100, nullable=true)
      */
     private $lastName;
@@ -70,7 +72,8 @@ class User extends BaseUser
      * @Assert\Url(
      *    message = "error.url.not_match",
      *    protocols = {"http", "https"},
-     *    checkDNS = true
+     *    checkDNS = true,
+     *    groups={"settings"}
      * )
      * @ORM\Column(name="url", type="string", length=255, nullable=true)
      */
@@ -78,21 +81,15 @@ class User extends BaseUser
 
     /**
      * @var string
-     *
-     * @Assert\NotBlank(message = "error.user.phone_number.not_blank", groups={"settings"})
-     * Assert\Regex(
-     *  pattern= "/([0-9\-\+\s])?/",
-     *  match = true,
-     *  message = "error.user.phone_number.regex_not_match",
-     *  groups={"settings"}
-     * )
-     * @ORM\Column(name="phone_number", type="string", nullable=true, nullable=true)
-     *
+     * @Assert\NotBlank(message = "error.phoneNumber.notBlank", groups={"settings"})
+     * @AssertPhoneNumber(message = "error.phoneNumber.notMatch", groups={"settings"})
+     * @ORM\Column(name="phone_number", type="phone_number", nullable=true)
      */
     protected $phoneNumber;
 
     /**
      * @Gedmo\Versioned
+     * @Assert\NotBlank(message = "error.city.notBlank", groups={"settings"})
      * @ORM\ManyToOne(targetEntity="Organization\ManagementBundle\Entity\City", inversedBy="users")
      * @ORM\JoinColumn(name="city_id", referencedColumnName="id")
      **/

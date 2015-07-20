@@ -1,0 +1,33 @@
+error:
+    sponsor:
+        name:
+            taken: "Sponsor already exists"
+        phoneNumber:
+            taken: "Phone number already exists"
+        email:
+            taken: "Email already exists"
+        url:
+            taken: "URL already exists"
+    partner:
+        name:
+            taken: "Partner already exists"
+        phoneNumber:
+            taken: "Phone number already exists"
+        email:
+            taken: "Email already exists"
+        url:
+            taken: "URL already exists"
+    speaker:
+        phoneNumber:
+            taken: "Phone number already exists"
+        email:
+            taken: "Email already exists"
+        url:
+            taken: "URL already exists"
+    helper:
+        phoneNumber:
+            taken: "Phone number already exists"
+        email:
+            taken: "Email already exists"
+        url:
+            taken: "URL already exists"

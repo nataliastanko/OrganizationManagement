@@ -6,6 +6,8 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
+use libphonenumber\PhoneNumberFormat;
+
 class SpeakerType extends AbstractType
 {
     /**
@@ -40,10 +42,12 @@ class SpeakerType extends AbstractType
                 ]
             )
             // ->add('photo')
-            ->add('phoneNumber', 'text',
+            ->add('phoneNumber', 'tel',
                 [
-                'required' => false,
-                'label' => 'organization.management.speaker.phoneNumber'
+                    'label' => 'organization.management.speaker.phoneNumber',
+                    'required' => false,
+                    'default_region' => 'PL', // GB
+                    'format' => PhoneNumberFormat::INTERNATIONAL
                 ]
             )
             ->add('email', 'email',

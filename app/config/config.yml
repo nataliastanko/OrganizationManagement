@@ -55,6 +55,8 @@ assetic:
 # Doctrine Configuration
 doctrine:
     dbal:
+        types:
+            phone_number: Misd\PhoneNumberBundle\Doctrine\DBAL\Types\PhoneNumberType
         driver:   pdo_mysql
         host:     "%database_host%"
         port:     "%database_port%"

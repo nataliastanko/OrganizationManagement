@@ -8,6 +8,8 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 use Doctrine\ORM\EntityRepository;
 
+use libphonenumber\PhoneNumberFormat;
+
 class HelperType extends AbstractType
 {
     /**
@@ -50,10 +52,12 @@ class HelperType extends AbstractType
                 'label' => 'organization.management.helper.url'
                 ]
             )
-            ->add('phoneNumber', 'text',
+            ->add('phoneNumber', 'tel',
                 [
-                'required' => false,
-                'label' => 'organization.management.helper.phoneNumber'
+                    'label' => 'organization.management.helper.phoneNumber',
+                    'required' => false,
+                    'default_region' => 'PL', // GB
+                    'format' => PhoneNumberFormat::INTERNATIONAL
                 ]
             )
             ->add('email', 'email',

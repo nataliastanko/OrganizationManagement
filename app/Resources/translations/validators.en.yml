@@ -1,0 +1,11 @@
+error:
+    phoneNumber:
+        notMatch: "Please provide a valid phone number"
+        notBlank: "Please provide a phone number"
+    email:
+        notMatch: "Please provide a valid email address"
+        notBlank: "Please provide an email address"
+    city:
+        notBlank: "Please provide a city"
+    cities:
+        notBlank: "Please provide a cities"

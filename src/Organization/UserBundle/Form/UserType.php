@@ -6,6 +6,8 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
+use libphonenumber\PhoneNumberFormat;
+
 class UserType extends AbstractType
 {
     /**
@@ -27,10 +29,12 @@ class UserType extends AbstractType
                 'label' => 'user.lastName'
                 ]
             )
-            ->add('phoneNumber', 'text',
+            ->add('phoneNumber', 'tel',
                 [
-                'required' => true,
-                'label' => 'user.phoneNumber'
+                    'label' => 'user.phoneNumber',
+                    'required' => true,
+                    'default_region' => 'PL', // GB
+                    'format' => PhoneNumberFormat::INTERNATIONAL
                 ]
             )
             ->add('city', 'entity', [

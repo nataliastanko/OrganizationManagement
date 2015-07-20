@@ -74,7 +74,7 @@ class SponsorController extends Controller
         $form = $this->createForm(new SponsorType(), $entity, array(
             'action' => $this->generateUrl('sponsor_create'),
             'method' => 'POST',
-            // 'validation_groups' => array(''),
+            'validation_groups' => array('settings'),
         ));
 
         $form->add('submit', 'submit', array('label' => 'button.create'));
@@ -164,6 +164,7 @@ class SponsorController extends Controller
         $form = $this->createForm(new SponsorType(), $entity, array(
             'action' => $this->generateUrl('sponsor_update', array('id' => $entity->getId())),
             'method' => 'PUT',
+            'validation_groups' => array('settings'),
         ));
 
         $form->add('submit', 'submit', array('label' => 'button.update'));

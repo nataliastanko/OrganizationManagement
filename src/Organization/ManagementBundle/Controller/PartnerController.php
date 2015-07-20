@@ -74,6 +74,7 @@ class PartnerController extends Controller
         $form = $this->createForm(new PartnerType(), $entity, array(
             'action' => $this->generateUrl('partner_create'),
             'method' => 'POST',
+            'validation_groups' => array('settings'),
         ));
 
         $form->add('submit', 'submit', array('label' => 'button.create'));
@@ -163,6 +164,7 @@ class PartnerController extends Controller
         $form = $this->createForm(new PartnerType(), $entity, array(
             'action' => $this->generateUrl('partner_update', array('id' => $entity->getId())),
             'method' => 'PUT',
+            'validation_groups' => array('settings'),
         ));
 
         $form->add('submit', 'submit', array('label' => 'button.update'));

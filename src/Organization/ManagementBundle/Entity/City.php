@@ -49,7 +49,7 @@ class City
      * @var string $email
      * @Gedmo\Versioned
      * @ORM\Column(name="email", type="string", length=255, nullable=true)
-     * @Assert\Email(message = "error.city.email.email_not_match", groups={"settings"})
+     * @Assert\Email(message = "error.email.notMatch", groups={"settings"})
      */
     protected $email;
 

@@ -8,37 +8,39 @@
         </a>
     </p>
 
-    <table class="table table-hover">
-        <thead>
-            <tr>
-                <th>{{ 'list.number' | trans }}</th>
-                <th>{{ 'organization.management.sponsor.name' | trans }}</th>
-                <th>{{ 'organization.management.sponsor.email' | trans }}</th>
-                <th>{{ 'organization.management.sponsor.phoneNumber' | trans }}</th>
-                <th>{{ 'organization.management.sponsor.url' | trans }}</th>
-                <th>&nbsp;</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for entity in entities %}
-            <tr>
-                <td>{{ loop.index }}</td>
-                <td>{{ entity.name }}</td>
-                <td>{{ entity.email }}</td>
-                <td>{{ entity.phoneNumber }}</td>
-                <td><a href="{{ entity.url }}">{{ entity.url }}</a></td>
-                <td>
-                <ul>
-                    <li>
-                        <a href="{{ path('sponsor_show', { 'id': entity.id }) }}">{{ 'button.show' | trans }}</a>
-                    </li>
-                    <li>
-                        <a href="{{ path('sponsor_edit', { 'id': entity.id }) }}">{{ 'button.edit' | trans }}</a>
-                    </li>
-                </ul>
-                </td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+    {% if entities is not empty %}
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>{{ 'list.number' | trans }}</th>
+                    <th>{{ 'organization.management.sponsor.name' | trans }}</th>
+                    <th>{{ 'organization.management.sponsor.email' | trans }}</th>
+                    <th>{{ 'organization.management.sponsor.phoneNumber' | trans }}</th>
+                    <th>{{ 'organization.management.sponsor.url' | trans }}</th>
+                    <th>&nbsp;</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for entity in entities %}
+                <tr>
+                    <td>{{ loop.index }}</td>
+                    <td>{{ entity.name }}</td>
+                    <td>{{ entity.email }}</td>
+                    <td>{{ entity.phoneNumber }}</td>
+                    <td><a href="{{ entity.url }}">{{ entity.url }}</a></td>
+                    <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('sponsor_show', { 'id': entity.id }) }}">{{ 'button.show' | trans }}</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('sponsor_edit', { 'id': entity.id }) }}">{{ 'button.edit' | trans }}</a>
+                        </li>
+                    </ul>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    {% endif %}
 {% endblock %}

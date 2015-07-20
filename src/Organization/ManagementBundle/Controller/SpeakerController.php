@@ -74,7 +74,7 @@ class SpeakerController extends Controller
         $form = $this->createForm(new SpeakerType(), $entity, array(
             'action' => $this->generateUrl('speaker_create'),
             'method' => 'POST',
-            'validation_groups' => array('registration'),
+            'validation_groups' => array('settings'),
         ));
 
         $form->add('submit', 'submit', array('label' => 'button.create'));

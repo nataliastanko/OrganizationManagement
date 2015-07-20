@@ -1,0 +1,33 @@
+error:
+    sponsor:
+        name:
+            taken: "Istnieje już sponsor o takiej nazwie"
+        phoneNumber:
+            taken: "Istnieje już sponsor z takim numerem telefonu"
+        email:
+            taken: "Istnieje już sponsor z takim adresem email"
+        url:
+            taken: "Istnieje już sponsor z taką stroną internetową"
+    partner:
+        name:
+            taken: "Istnieje już partner o takiej nazwie"
+        phoneNumber:
+            taken: "Istnieje już partner z takim numerem telefonu"
+        email:
+            taken: "Istnieje już partner z takim adresem email"
+        url:
+            taken: "Istnieje już partner z taką stroną internetową"
+    speaker:
+        phoneNumber:
+            taken: "Istnieje już prelegent z takim numerem telefonu"
+        email:
+            taken: "Istnieje już prelegent z takim adresem email"
+        url:
+            taken: "Istnieje już prelegent z taką stroną internetową"
+    helper:
+        phoneNumber:
+            taken: "Istnieje już osoba z takim numerem telefonu"
+        email:
+            taken: "Istnieje już osoba z takim adresem email"
+        url:
+            taken: "Istnieje już osoba z taką stroną internetową"

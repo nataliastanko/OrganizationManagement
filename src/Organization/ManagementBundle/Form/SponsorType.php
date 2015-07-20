@@ -8,6 +8,8 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 use Doctrine\ORM\EntityRepository;
 
+use libphonenumber\PhoneNumberFormat;
+
 class SponsorType extends AbstractType
 {
     /**
@@ -50,10 +52,12 @@ class SponsorType extends AbstractType
                 },
                 ]
             )
-            ->add('phoneNumber', 'text',
+            ->add('phoneNumber', 'tel',
                 [
-                'required' => false,
-                'label' => 'organization.management.sponsor.phoneNumber'
+                    'label' => 'organization.management.sponsor.phoneNumber',
+                    'required' => false,
+                    'default_region' => 'PL', // GB
+                    'format' => PhoneNumberFormat::INTERNATIONAL
                 ]
             )
             ->add('description', 'textarea',

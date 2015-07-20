@@ -1,0 +1,11 @@
+error:
+    phoneNumber:
+        notMatch: "Podaj poprawny numer telefonu"
+        notBlank: "Podaj numer telefonu"
+    email:
+        notMatch: "Podaj poprawny adres email"
+        notBlank: "Podaj adres email"
+    city:
+        notBlank: "Wybierz miasto"
+    cities:
+        notBlank: "Wybierz miasta"

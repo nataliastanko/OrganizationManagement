@@ -14,6 +14,8 @@ use Gedmo\Mapping\Annotation as Gedmo;
 
 use Organization\ManagementBundle\Entity\City;
 
+use Misd\PhoneNumberBundle\Validator\Constraints\PhoneNumber as AssertPhoneNumber;
+
 /**
  * Partner
  *
@@ -21,9 +23,9 @@ use Organization\ManagementBundle\Entity\City;
  * @ORM\Entity
  * @Gedmo\Loggable
  * @Gedmo\SoftDeleteable(fieldName="deletedAt", timeAware=false)
- * @UniqueEntity(fields="name", message="error.partner.name.taken")
- * UniqueEntity(fields="email", message="error.partner.email.taken")
- * @UniqueEntity(fields="url", message="error.sponsor.url.taken")
+ * @UniqueEntity(fields="name", message="error.partner.name.taken", groups={"settings"})
+ * @UniqueEntity(fields="email", message="error.partner.email.taken", groups={"settings"})
+ * @UniqueEntity(fields="url", message="error.partner.url.taken", groups={"settings"})
  */
 class Partner
 {
@@ -65,21 +67,15 @@ class Partner
      * @var string $email
      * @Gedmo\Versioned
      * @ORM\Column(name="email", type="string", length=255, nullable=true)
-     * @Assert\Email(message = "error.user.email.email_not_match", groups={"settings"})
+     * @Assert\Email(message = "error.email.notMatch", groups={"settings"})
      */
     protected $email;
 
     /**
      * @var string
      * @Gedmo\Versioned
-     * Assert\NotBlank(message = "error.user.phone_number.not_blank", groups={"settings"})
-     * Assert\Regex(
-     *  pattern= "/([0-9\-\+\s])?/",
-     *  match = true,
-     *  message = "error.user.phone_number.regex_not_match",
-     *  groups={"settings"}
-     * )
-     * @ORM\Column(name="phone_number", type="string", length=255, nullable=true)
+     * @AssertPhoneNumber(message = "error.phoneNumber.notMatch", groups={"settings"})
+     * @ORM\Column(name="phone_number", type="phone_number", nullable=true)
      */
     private $phoneNumber;
 
@@ -89,7 +85,8 @@ class Partner
      * @Assert\Url(
      *    message = "error.url.not_match",
      *    protocols = {"http", "https"},
-     *    checkDNS = true
+     *    checkDNS = true,
+     *    groups={"settings"}
      * )
      * @ORM\Column(name="url", type="string", length=255)
      */
@@ -110,6 +107,11 @@ class Partner
     private $resources;
 
     /**
+     * @Assert\Count(
+     *      min = "1",
+     *      minMessage = "error.cities.notBlank",
+     *      groups={"settings"}
+     * )
      * @ORM\ManyToMany(targetEntity="City", inversedBy="partners")
      * @ORM\JoinTable(name="partners_city")
      **/

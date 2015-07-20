@@ -74,6 +74,7 @@ class HelperController extends Controller
         $form = $this->createForm(new HelperType(), $entity, array(
             'action' => $this->generateUrl('helper_create'),
             'method' => 'POST',
+            'validation_groups' => array('settings'),
         ));
 
         $form->add('submit', 'submit', array('label' => 'button.create'));

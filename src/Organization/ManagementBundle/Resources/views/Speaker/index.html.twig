@@ -8,40 +8,41 @@
         </a>
     </p>
 
-    <table class="table table-hover">
-        <thead>
-            <tr>
-                <th>{{ 'list.number' | trans }}</th>
-                <th>{{ 'organization.management.speaker.name' | trans }}</th>
-                <th>{{ 'organization.management.speaker.lastName' | trans }}</th>
-                <th>{{ 'organization.management.speaker.email' | trans }}</th>
-                <th>{{ 'organization.management.speaker.phoneNumber' | trans }}</th>
-                <th>{{ 'organization.management.speaker.url' | trans }}</th>
-                <th>&nbsp;</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for entity in entities %}
-            <tr>
-                <td>{{ loop.index }}</td>
-                <td>{{ entity.name }}</td>
-                <td>{{ entity.lastName }}</td>
-                <td>{{ entity.email }}</td>
-                <td>{{ entity.phoneNumber }}</td>
-                <td><a href="{{ entity.url }}">{{ entity.url }}</a></td>
-                <td>
-                <ul>
-                    <li>
-                        <a href="{{ path('speaker_show', { 'id': entity.id }) }}">{{ 'button.show' | trans }}</a>
-                    </li>
-                    <li>
-                        <a href="{{ path('speaker_edit', { 'id': entity.id }) }}">{{ 'button.edit' | trans }}</a>
-                    </li>
-                </ul>
-                </td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-
+    {% if entities is not empty %}
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>{{ 'list.number' | trans }}</th>
+                    <th>{{ 'organization.management.speaker.name' | trans }}</th>
+                    <th>{{ 'organization.management.speaker.lastName' | trans }}</th>
+                    <th>{{ 'organization.management.speaker.email' | trans }}</th>
+                    <th>{{ 'organization.management.speaker.phoneNumber' | trans }}</th>
+                    <th>{{ 'organization.management.speaker.url' | trans }}</th>
+                    <th>&nbsp;</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for entity in entities %}
+                <tr>
+                    <td>{{ loop.index }}</td>
+                    <td>{{ entity.name }}</td>
+                    <td>{{ entity.lastName }}</td>
+                    <td>{{ entity.email }}</td>
+                    <td>{{ entity.phoneNumber }}</td>
+                    <td><a href="{{ entity.url }}">{{ entity.url }}</a></td>
+                    <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('speaker_show', { 'id': entity.id }) }}">{{ 'button.show' | trans }}</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('speaker_edit', { 'id': entity.id }) }}">{{ 'button.edit' | trans }}</a>
+                        </li>
+                    </ul>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    {% endif %}
 {% endblock %}
