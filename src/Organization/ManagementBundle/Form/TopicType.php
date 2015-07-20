@@ -18,7 +18,7 @@ class TopicType extends AbstractType
             ->add('speaker', 'entity',
                 [
                 'class' => 'Organization\ManagementBundle\Entity\Speaker',
-                'property' => 'name',
+                'property' => 'fullname',
                 'required' => true,
                 'label' => 'form.speaker.label',
                 'placeholder' => 'form.speaker.placeholder'

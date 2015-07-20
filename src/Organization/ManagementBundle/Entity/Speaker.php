@@ -318,4 +318,25 @@ class Speaker
         return $this;
     }
 
+    /**
+     * Get meetings
+     *
+     * @return array
+     */
+    public function getMeetings()
+    {
+        return $this->meetings;
+    }
+
+    /**
+     * Get fullname
+     *
+     * @return string
+     */
+    public function getFullname()
+    {
+        return $this->name. ' '.$this->lastName;
+    }
+
+
 }

@@ -37,4 +37,3 @@ security:
         - { path: ^/admin/, role: ROLE_ADMIN }
         - { path: ^/account/, role: ROLE_USER }
         - { path: ^/management, role: ROLE_USER }
-        - { path: ^/meeting, role: ROLE_USER }

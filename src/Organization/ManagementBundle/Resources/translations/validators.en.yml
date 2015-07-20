@@ -32,6 +32,17 @@ error:
             taken: "URL already exists"
         topic:
             notBlank: "Please provide speaker"
+    city:
+        name:
+            taken: "City already exists"
+            notBlank: "Please enter city name"
+        email:
+            taken: "Email already exists"
+    topic:
+        name:
+            notBlank: "Please enter topic name"
+        speaker:
+            notBlank: "Choose speaker from the list"
     helper:
         name:
             notBlank: "Please enter helper name"
@@ -52,3 +63,6 @@ error:
             taken: "Email already exists"
         url:
             taken: "URL already exists"
+    meetings:
+        name:
+            notBlank: "Please fill event name"

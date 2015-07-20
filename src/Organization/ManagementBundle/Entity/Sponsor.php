@@ -114,9 +114,14 @@ class Sponsor
      *      groups={"settings"}
      * )
      * @ORM\ManyToMany(targetEntity="City", inversedBy="sponsors")
-     * @ORM\JoinTable(name="sponsors_city")
+     * @ORM\JoinTable(name="sponsors_cities")
      **/
     private $cities;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="Meeting", mappedBy="sponsors")
+     **/
+    private $meetings;
 
     public function __construct() {
         $this->cities = new ArrayCollection();
@@ -298,12 +303,6 @@ class Sponsor
     public function getCities()
     {
         return $this->cities;
-    }
-
-    public function addCity(City $city)
-    {
-        $tag->addCity($this); // synchronously updating inverse side
-        $this->cities[] = $city;
     }
 
 }

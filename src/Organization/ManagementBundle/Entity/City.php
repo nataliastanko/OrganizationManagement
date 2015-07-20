@@ -19,7 +19,8 @@ use Gedmo\Mapping\Annotation as Gedmo;
  * @ORM\Entity
  * @Gedmo\Loggable
  * @Gedmo\SoftDeleteable(fieldName="deletedAt", timeAware=false)
- * @UniqueEntity(fields="name", message="error.city.name.taken")
+ * @UniqueEntity(fields="name", message="error.city.name.taken", groups={"settings"})
+ * @UniqueEntity(fields="email", message="error.city.email.taken", groups={"settings"})
  */
 class City
 {
@@ -40,6 +41,7 @@ class City
     /**
      * @var string
      * @Gedmo\Versioned
+     * @Assert\Email(message = "error.city.name.notBlank", groups={"settings"})
      * @ORM\Column(name="name", type="string", length=255)
      */
     private $name;
@@ -48,8 +50,8 @@ class City
      *
      * @var string $email
      * @Gedmo\Versioned
-     * @ORM\Column(name="email", type="string", length=255, nullable=true)
      * @Assert\Email(message = "error.email.notMatch", groups={"settings"})
+     * @ORM\Column(name="email", type="string", length=255, nullable=true)
      */
     protected $email;
 
@@ -57,6 +59,11 @@ class City
      * @ORM\OneToMany(targetEntity="Organization\UserBundle\Entity\User", mappedBy="city")
      **/
     private $users;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Meeting", mappedBy="city")
+     **/
+    private $meetings;
 
     /**
      * @ORM\OneToMany(targetEntity="Place", mappedBy="city")
@@ -80,6 +87,7 @@ class City
 
     public function __construct() {
         $this->users = new ArrayCollection();
+        $this->meetings = new ArrayCollection();
         $this->places = new ArrayCollection();
         $this->sponsor = new ArrayCollection();
         $this->helpers = new ArrayCollection();
@@ -215,6 +223,16 @@ class City
     public function getSponsors()
     {
         return $this->sponsors;
+    }
+
+    /**
+     * Get meetings
+     *
+     * @return ArrayCollection
+     */
+    public function getMeetings()
+    {
+        return $this->meetings;
     }
 
 }

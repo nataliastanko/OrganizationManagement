@@ -7,21 +7,21 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
-use Organization\ManagementBundle\Entity\City;
-use Organization\ManagementBundle\Form\CityType;
+use Organization\ManagementBundle\Entity\Meeting;
+use Organization\ManagementBundle\Form\MeetingType;
 
 /**
- * City controller.
+ * Meeting controller.
  *
- * @Route("/city")
+ * @Route("/meeting")
  */
-class CityController extends Controller
+class MeetingController extends Controller
 {
 
     /**
-     * Lists all City entities.
+     * Lists all Meeting entities.
      *
-     * @Route("/", name="city")
+     * @Route("/", name="meeting")
      * @Method("GET")
      * @Template()
      */
@@ -29,22 +29,22 @@ class CityController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entities = $em->getRepository('OrganizationManagementBundle:City')->findAll();
+        $entities = $em->getRepository('OrganizationManagementBundle:Meeting')->findAll();
 
         return array(
             'entities' => $entities,
         );
     }
     /**
-     * Creates a new City entity.
+     * Creates a new Meeting entity.
      *
-     * @Route("/", name="city_create")
+     * @Route("/", name="meeting_create")
      * @Method("POST")
-     * @Template("OrganizationManagementBundle:City:new.html.twig")
+     * @Template("OrganizationManagementBundle:Meeting:new.html.twig")
      */
     public function createAction(Request $request)
     {
-        $entity = new City();
+        $entity = new Meeting();
         $form = $this->createCreateForm($entity);
         $form->handleRequest($request);
 
@@ -53,7 +53,7 @@ class CityController extends Controller
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('city_show', array('id' => $entity->getId())));
+            return $this->redirect($this->generateUrl('meeting_show', array('id' => $entity->getId())));
         }
 
         return array(
@@ -63,35 +63,35 @@ class CityController extends Controller
     }
 
     /**
-     * Creates a form to create a City entity.
+     * Creates a form to create a Meeting entity.
      *
-     * @param City $entity The entity
+     * @param Meeting $entity The entity
      *
      * @return \Symfony\Component\Form\Form The form
      */
-    private function createCreateForm(City $entity)
+    private function createCreateForm(Meeting $entity)
     {
-        $form = $this->createForm(new CityType(), $entity, array(
-            'action' => $this->generateUrl('city_create'),
+        $form = $this->createForm(new MeetingType(), $entity, array(
+            'action' => $this->generateUrl('meeting_create'),
             'method' => 'POST',
             'validation_groups' => array('settings'),
         ));
 
-        $form->add('submit', 'submit', array('label' => 'button.create'));
+        $form->add('submit', 'submit', array('label' => 'Create'));
 
         return $form;
     }
 
     /**
-     * Displays a form to create a new City entity.
+     * Displays a form to create a new Meeting entity.
      *
-     * @Route("/new", name="city_new")
+     * @Route("/new", name="meeting_new")
      * @Method("GET")
      * @Template()
      */
     public function newAction()
     {
-        $entity = new City();
+        $entity = new Meeting();
         $form   = $this->createCreateForm($entity);
 
         return array(
@@ -101,9 +101,9 @@ class CityController extends Controller
     }
 
     /**
-     * Finds and displays a City entity.
+     * Finds and displays a Meeting entity.
      *
-     * @Route("/{id}", name="city_show")
+     * @Route("/{id}", name="meeting_show")
      * @Method("GET")
      * @Template()
      */
@@ -111,10 +111,10 @@ class CityController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('OrganizationManagementBundle:City')->find($id);
+        $entity = $em->getRepository('OrganizationManagementBundle:Meeting')->find($id);
 
         if (!$entity) {
-            throw $this->createNotFoundException('Unable to find City entity.');
+            throw $this->createNotFoundException('Unable to find Meeting entity.');
         }
 
         $deleteForm = $this->createDeleteForm($id);
@@ -126,9 +126,9 @@ class CityController extends Controller
     }
 
     /**
-     * Displays a form to edit an existing City entity.
+     * Displays a form to edit an existing Meeting entity.
      *
-     * @Route("/{id}/edit", name="city_edit")
+     * @Route("/{id}/edit", name="meeting_edit")
      * @Method("GET")
      * @Template()
      */
@@ -136,10 +136,10 @@ class CityController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('OrganizationManagementBundle:City')->find($id);
+        $entity = $em->getRepository('OrganizationManagementBundle:Meeting')->find($id);
 
         if (!$entity) {
-            throw $this->createNotFoundException('Unable to find City entity.');
+            throw $this->createNotFoundException('Unable to find Meeting entity.');
         }
 
         $editForm = $this->createEditForm($entity);
@@ -153,39 +153,39 @@ class CityController extends Controller
     }
 
     /**
-    * Creates a form to edit a City entity.
+    * Creates a form to edit a Meeting entity.
     *
-    * @param City $entity The entity
+    * @param Meeting $entity The entity
     *
     * @return \Symfony\Component\Form\Form The form
     */
-    private function createEditForm(City $entity)
+    private function createEditForm(Meeting $entity)
     {
-        $form = $this->createForm(new CityType(), $entity, array(
-            'action' => $this->generateUrl('city_update', array('id' => $entity->getId())),
+        $form = $this->createForm(new MeetingType(), $entity, array(
+            'action' => $this->generateUrl('meeting_update', array('id' => $entity->getId())),
             'method' => 'PUT',
             'validation_groups' => array('settings'),
         ));
 
-        $form->add('submit', 'submit', array('label' => 'button.update'));
+        $form->add('submit', 'submit', array('label' => 'Update'));
 
         return $form;
     }
     /**
-     * Edits an existing City entity.
+     * Edits an existing Meeting entity.
      *
-     * @Route("/{id}", name="city_update")
+     * @Route("/{id}", name="meeting_update")
      * @Method("PUT")
-     * @Template("OrganizationManagementBundle:City:edit.html.twig")
+     * @Template("OrganizationManagementBundle:Meeting:edit.html.twig")
      */
     public function updateAction(Request $request, $id)
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('OrganizationManagementBundle:City')->find($id);
+        $entity = $em->getRepository('OrganizationManagementBundle:Meeting')->find($id);
 
         if (!$entity) {
-            throw $this->createNotFoundException('Unable to find City entity.');
+            throw $this->createNotFoundException('Unable to find Meeting entity.');
         }
 
         $deleteForm = $this->createDeleteForm($id);
@@ -195,7 +195,7 @@ class CityController extends Controller
         if ($editForm->isValid()) {
             $em->flush();
 
-            return $this->redirect($this->generateUrl('city_show', array('id' => $id)));
+            return $this->redirect($this->generateUrl('meeting_show', array('id' => $id)));
         }
 
         return array(
@@ -205,9 +205,9 @@ class CityController extends Controller
         );
     }
     /**
-     * Deletes a City entity.
+     * Deletes a Meeting entity.
      *
-     * @Route("/{id}", name="city_delete")
+     * @Route("/{id}", name="meeting_delete")
      * @Method("DELETE")
      */
     public function deleteAction(Request $request, $id)
@@ -217,21 +217,21 @@ class CityController extends Controller
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $entity = $em->getRepository('OrganizationManagementBundle:City')->find($id);
+            $entity = $em->getRepository('OrganizationManagementBundle:Meeting')->find($id);
 
             if (!$entity) {
-                throw $this->createNotFoundException('Unable to find City entity.');
+                throw $this->createNotFoundException('Unable to find Meeting entity.');
             }
 
             $em->remove($entity);
             $em->flush();
         }
 
-        return $this->redirect($this->generateUrl('city'));
+        return $this->redirect($this->generateUrl('meeting'));
     }
 
     /**
-     * Creates a form to delete a City entity by id.
+     * Creates a form to delete a Meeting entity by id.
      *
      * @param mixed $id The entity id
      *
@@ -240,9 +240,9 @@ class CityController extends Controller
     private function createDeleteForm($id)
     {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('city_delete', array('id' => $id)))
+            ->setAction($this->generateUrl('meeting_delete', array('id' => $id)))
             ->setMethod('DELETE')
-            ->add('submit', 'submit',
+             ->add('submit', 'submit',
                 [
                     'label' => 'button.delete',
                     'attr' => ['class' => 'btn btn-default']

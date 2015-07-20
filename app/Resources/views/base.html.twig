@@ -48,17 +48,6 @@
                         {% endif %}
                         <li><a href="{{ url('user') }}">{{ 'menu.users' | trans }}</a></li>
                         <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{ 'menu.enrollment' | trans }} <span class="caret"></span></a>
-                            <ul class="dropdown-menu">
-                                <li class="dropdown-header">{{ 'menu.enrollment.city.1' | trans }}</li>
-                                <li role="separator" class="divider"></li>
-                                <li><a href="{{ url('person') }}">{{ 'menu.persons' | trans }}</a></li>
-                                <li><a href="{{ url('question') }}">{{ 'menu.questions' | trans }}</a></li>
-                                {# <li><a href="{{ url('answer') }}">{{ 'menu.answers' | trans }}</a></li> #}
-                                <li class="dropdown-header">{{ 'menu.enrollment.city.others' | trans }}</li>
-                            </ul>
-                        </li>
-                        <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{ 'menu.cities' | trans }} <span class="caret"></span></a>
                             <ul class="dropdown-menu">
                                 {% for city in allCities() %}
@@ -80,12 +69,17 @@
                                 <li><a href="{{ url('place') }}">{{ 'menu.places' | trans }}</a></li>
                             </ul>
                         </li>
+                        <li><a href="{{ url('topic') }}">{{ 'menu.topics' | trans }}</a></li>
+                        <li><a href="{{ url('meeting') }}">{{ 'menu.meetings' | trans }}</a></li>
                         <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{ 'menu.meetings' | trans }} <span class="caret"></span></a>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{ 'menu.enrollment' | trans }} <span class="caret"></span></a>
                             <ul class="dropdown-menu">
-                                <li><a href="{{ url('topic') }}">{{ 'menu.topics' | trans }}</a></li>
+                                <li class="dropdown-header">{{ 'menu.enrollment.city.1' | trans }}</li>
                                 <li role="separator" class="divider"></li>
-                                <li><a href="{{ url('topic_new') }}">{{ 'button.add' | trans }}</a></li>
+                                <li><a href="{{ url('person') }}">{{ 'menu.persons' | trans }}</a></li>
+                                <li><a href="{{ url('question') }}">{{ 'menu.questions' | trans }}</a></li>
+                                {# <li><a href="{{ url('answer') }}">{{ 'menu.answers' | trans }}</a></li> #}
+                                <li class="dropdown-header">{{ 'menu.enrollment.city.others' | trans }}</li>
                             </ul>
                         </li>
                     </ul>

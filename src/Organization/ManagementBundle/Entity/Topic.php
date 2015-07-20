@@ -70,6 +70,11 @@ class Topic
     private $speaker;
 
     /**
+     * @ORM\ManyToMany(targetEntity="Meeting", mappedBy="topics")
+     **/
+    private $meetings;
+
+    /**
      * Get id
      *
      * @return integer
@@ -168,6 +173,16 @@ class Topic
         $this->deletedAt = $deletedAt;
 
         return $this;
+    }
+
+    /**
+     * Get topic name with speaker name
+     *
+     * @return topic fullname
+     */
+    public function getFullname()
+    {
+        return $this->name. ' - '. $this->getSpeaker()->getFullname();
     }
 
 }

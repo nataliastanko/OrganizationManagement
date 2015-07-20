@@ -32,6 +32,17 @@ error:
             taken: "Istnieje już prelegent z taką stroną internetową"
         topic:
             notBlank: "Wybierz proszę temat"
+    city:
+        name:
+            taken: "Istnieje już miasto o takiej nazwie"
+            notBlank: "Podaj nazwę miasta"
+        email:
+            taken: "Istnieje już miasto z takim adresem email"
+    topic:
+        name:
+            notBlank: "Podaj temat"
+        speaker:
+            notBlank: "Wybierz prelegenta"
     helper:
         name:
             notBlank: "Podaj imię pomocnika"
@@ -52,3 +63,7 @@ error:
             taken: "Istnieje już miejsce z takim adresem email"
         url:
             taken: "Istnieje już miejsce z taką stroną internetową"
+    meetings:
+        name:
+            notBlank: "Podaj nazwę wydarzenia"
+

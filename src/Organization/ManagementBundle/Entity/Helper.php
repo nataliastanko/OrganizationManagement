@@ -115,7 +115,7 @@ class Helper
      *      groups={"settings"}
      * )
      * @ORM\ManyToMany(targetEntity="City", inversedBy="helpers")
-     * @ORM\JoinTable(name="helpers_city")
+     * @ORM\JoinTable(name="helpers_cities")
      **/
     private $cities;
 
@@ -299,12 +299,6 @@ class Helper
     public function getCities()
     {
         return $this->cities;
-    }
-
-    public function addCity(City $city)
-    {
-        $tag->addCity($this); // synchronously updating inverse side
-        $this->cities[] = $city;
     }
 
 }

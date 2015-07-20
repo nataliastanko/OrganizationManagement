@@ -6,7 +6,7 @@ organization_log:
 organization_management:
     resource: "@OrganizationManagementBundle/Controller/"
     type:     annotation
-    prefix:   /meeting
+    prefix:   /management
 
 organization_user:
     resource: "@OrganizationUserBundle/Controller/"
