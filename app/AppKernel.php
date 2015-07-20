@@ -25,6 +25,7 @@ class AppKernel extends Kernel
             new Organization\EnrollmentBundle\OrganizationEnrollmentBundle(),
             new Organization\UserBundle\OrganizationUserBundle(),
             new Organization\ManagementBundle\OrganizationManagementBundle(),
+            new Organization\LogBundle\OrganizationLogBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

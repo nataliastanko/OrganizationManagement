@@ -1,3 +1,8 @@
+organization_log:
+    resource: "@OrganizationLogBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
 organization_management:
     resource: "@OrganizationManagementBundle/Controller/"
     type:     annotation

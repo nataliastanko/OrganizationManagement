@@ -1,0 +1,5 @@
+services:
+  log.twig.extension:
+    class: Organization\LogBundle\Twig\LogExtension
+    tags:
+      - { name: twig.extension }

@@ -22,6 +22,7 @@ menu:
     sponsors: "Sponsors"
     partners: "Partners"
     helpers: "Helpers"
+    logs: "Actions logs"
 button:
     show: "details"
     back: "back"

@@ -22,6 +22,7 @@ menu:
     sponsors: "Sponsorzy"
     partners: "Partnerzy"
     helpers: "Osoby chętne do pomocy"
+    logs: "Ostatnia aktywność"
 button:
     show: "szczegóły"
     back: "powrót"
