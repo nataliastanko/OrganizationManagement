@@ -8,3 +8,4 @@ user:
     phoneNumber: "Phone number"
     url: "WWW (e.g. blog)"
     city: "City"
+    photo: "Photo"

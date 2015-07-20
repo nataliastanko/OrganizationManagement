@@ -1,0 +1,5 @@
+# https://github.com/ornicar/GravatarBundle
+ornicar_gravatar:
+    rating: g
+    size: 80
+    default: mm

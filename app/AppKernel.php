@@ -20,6 +20,7 @@ class AppKernel extends Kernel
             new Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle(),
             new Doctrine\Bundle\MigrationsBundle\DoctrineMigrationsBundle(),
             new Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle(),
+            new Ornicar\GravatarBundle\OrnicarGravatarBundle(),
 
             new AppBundle\AppBundle(),
             new Organization\EnrollmentBundle\OrganizationEnrollmentBundle(),
