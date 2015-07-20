@@ -11,12 +11,14 @@ Organization bundles:
   * EnrollmentBundle
   * UserBundle
   * ManagementBundle
+  * LogBundle
 
 Integration with:
 
   * FOSUserBundle
   * DoctrineMigrationsBundle
   * StofDoctrineExtensionsBundle
+  * DoctrineFixturesBundle
 
 Installation and running
 ----------------------------------
