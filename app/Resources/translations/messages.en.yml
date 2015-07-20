@@ -30,6 +30,7 @@ button:
     update: "update"
     create: "create"
     add: "add"
+    delete: "delete"
 list:
     number: "Number"
 

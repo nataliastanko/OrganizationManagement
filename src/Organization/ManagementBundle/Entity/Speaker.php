@@ -298,4 +298,26 @@ class Speaker
         return $this->url;
     }
 
+    /**
+     * Get deletedAt
+     *
+     * @return DateTime
+     */
+    public function getDeletedAt() {
+        return $this->deletedAt;
+    }
+
+    /**
+     * Set deletedAt
+     *
+     * @param string $deletedAt
+     * @return Speaker
+     */
+    public function setDeletedAt($deletedAt)
+    {
+        $this->deletedAt = $deletedAt;
+
+        return $this;
+    }
+
 }

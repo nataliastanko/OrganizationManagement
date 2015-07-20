@@ -242,7 +242,12 @@ class SpeakerController extends Controller
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('speaker_delete', array('id' => $id)))
             ->setMethod('DELETE')
-            ->add('submit', 'submit', array('label' => 'Delete'))
+            ->add('submit', 'submit',
+                [
+                    'label' => 'button.delete',
+                    'attr' => ['class' => 'btn btn-default']
+                ]
+            )
             ->getForm()
         ;
     }

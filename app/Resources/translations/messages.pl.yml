@@ -30,5 +30,6 @@ button:
     update: "zapisz"
     create: "dodaj"
     add: "dodaj"
+    delete: "usuń"
 list:
     number: "Kolejna liczba"

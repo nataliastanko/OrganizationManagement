@@ -273,6 +273,28 @@ class Helper
     }
 
     /**
+     * Get deletedAt
+     *
+     * @return DateTime
+     */
+    public function getDeletedAt() {
+        return $this->deletedAt;
+    }
+
+    /**
+     * Set deletedAt
+     *
+     * @param string $deletedAt
+     * @return Helper
+     */
+    public function setDeletedAt($deletedAt)
+    {
+        $this->deletedAt = $deletedAt;
+
+        return $this;
+    }
+
+    /**
      * Get cities
      *
      * @return array

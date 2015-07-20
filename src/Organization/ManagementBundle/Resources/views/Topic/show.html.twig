@@ -20,9 +20,12 @@
         </tbody>
     </table>
 
-    <a class="btn btn-default" href="{{ path('topic_edit', { 'id': entity.id }) }}">
-        {{ 'button.edit' | trans }}
-    </a>
-
-    {# {{ form(delete_form) }} #}
+    <div class="pull-left">
+         <a class="btn btn-default" href="{{ path('topic_edit', { 'id': entity.id }) }}">
+            {{ 'button.edit' | trans }}
+        </a>
+    </div>
+    <div class="pull-right">
+        {{ form(delete_form) }}
+    </div>
 {% endblock %}

@@ -19,7 +19,7 @@
             </tr>
             <tr>
                 <th>{{ 'organization.management.partner.url' | trans }}</th>
-                <td>{{ entity.url }}</td>
+                <td><a href="{{ entity.url }}">{{ entity.url }}</a></td>
             </tr>
             <tr>
                 <th>{{ 'organization.management.partner.phoneNumber' | trans }}</th>
@@ -44,9 +44,13 @@
         </tbody>
     </table>
 
-    <a class="btn btn-default" href="{{ path('partner_edit', { 'id': entity.id }) }}">
-        {{ 'button.edit' | trans }}
-    </a>
+    <div class="pull-left">
+         <a class="btn btn-default" href="{{ path('partner_edit', { 'id': entity.id }) }}">
+            {{ 'button.edit' | trans }}
+        </a>
+    </div>
+    <div class="pull-right">
+        {{ form(delete_form) }}
+    </div>
 
-    {# {{ form(delete_form) }} #}
 {% endblock %}
