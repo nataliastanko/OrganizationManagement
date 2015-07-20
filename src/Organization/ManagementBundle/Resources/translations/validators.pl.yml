@@ -2,6 +2,7 @@ error:
     sponsor:
         name:
             taken: "Istnieje już sponsor o takiej nazwie"
+            notBlank: "Podaj nazwę sponsora"
         phoneNumber:
             taken: "Istnieje już sponsor z takim numerem telefonu"
         email:
@@ -11,6 +12,7 @@ error:
     partner:
         name:
             taken: "Istnieje już partner o takiej nazwie"
+            notBlank: "Podaj nazwę partnera"
         phoneNumber:
             taken: "Istnieje już partner z takim numerem telefonu"
         email:
@@ -28,6 +30,8 @@ error:
             taken: "Istnieje już prelegent z takim adresem email"
         url:
             taken: "Istnieje już prelegent z taką stroną internetową"
+        topic:
+            notBlank: "Wybierz proszę temat"
     helper:
         name:
             notBlank: "Podaj imię pomocnika"
@@ -39,3 +43,12 @@ error:
             taken: "Istnieje już osoba z takim adresem email"
         url:
             taken: "Istnieje już osoba z taką stroną internetową"
+    place:
+        name:
+            taken: "Istnieje już miejsce o takiej nazwie"
+        phoneNumber:
+            taken: "Istnieje już miejsce z takim numerem telefonu"
+        email:
+            taken: "Istnieje już miejsce z takim adresem email"
+        url:
+            taken: "Istnieje już miejsce z taką stroną internetową"

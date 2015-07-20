@@ -9,7 +9,3 @@ user:
     url: "Strona www (np. blog)"
     photo: "Zdjęcie"
     city: "Miasto"
-    form:
-        city:
-            label: "Wybierz miasto"
-            placeholder: "Wybierz miasto"

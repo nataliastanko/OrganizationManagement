@@ -23,6 +23,7 @@ menu:
     partners: "Partnerzy"
     helpers: "Osoby chętne do pomocy"
     logs: "Ostatnia aktywność"
+    places: "Miejsca"
 button:
     show: "szczegóły"
     back: "powrót"
@@ -35,3 +36,13 @@ button:
     disable: "wyłącz logowanie"
 list:
     number: "Kolejna liczba"
+form:
+    city:
+        label: "Wybierz miasto"
+        placeholder: "Wybierz miasto"
+    topic:
+        label: "Wybierz temat"
+        placeholder: "Wybierz temat"
+    speaker:
+        label: "Wybierz prelegenta"
+        placeholder: "Wybierz prelegenta"

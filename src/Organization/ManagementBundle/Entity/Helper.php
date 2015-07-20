@@ -58,6 +58,7 @@ class Helper
     /**
      * @var string
      * @Gedmo\Versioned
+     * @Assert\NotBlank(message = "error.helper.name.notBlank", groups={"settings"})
      * @ORM\Column(name="name", type="string", length=255)
      */
     private $name;
@@ -65,6 +66,7 @@ class Helper
     /**
      * @var string
      * @Gedmo\Versioned
+     * @Assert\NotBlank(message = "error.helper.lastname.notBlank", groups={"settings"})
      * @ORM\Column(name="last_name", type="string", length=255)
      */
     private $lastName;
@@ -94,8 +96,8 @@ class Helper
      *
      * @var string $email
      * @Gedmo\Versioned
-     * @ORM\Column(name="email", type="string", length=255, nullable=true)
      * @Assert\Email(message = "error.email.notMatch", groups={"settings"})
+     * @ORM\Column(name="email", type="string", length=255, nullable=true)
      */
     protected $email;
 

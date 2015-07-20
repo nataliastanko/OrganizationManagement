@@ -2,6 +2,8 @@
 
 namespace Organization\ManagementBundle\Entity;
 
+use Doctrine\ORM\Mapping as ORM;
+
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Validator\Constraints as Assert;
 
@@ -9,24 +11,23 @@ use Gedmo\Timestampable\Traits\TimestampableEntity;
 use Gedmo\Blameable\Traits\BlameableEntity;
 use Gedmo\Mapping\Annotation as Gedmo;
 
-use Doctrine\ORM\Mapping as ORM;
+use Organization\ManagementBundle\Entity\City;
 
 use Misd\PhoneNumberBundle\Validator\Constraints\PhoneNumber as AssertPhoneNumber;
 
 /**
- * Speaker
+ * Place
  *
- * @ORM\Table(name="speakers")
+ * @ORM\Table(name="places")
  * @ORM\Entity
  * @Gedmo\Loggable
  * @Gedmo\SoftDeleteable(fieldName="deletedAt", timeAware=false)
- * @UniqueEntity(fields="email", message="error.speaker.email.taken", groups={"settings"})
- * @UniqueEntity(fields="url", message="error.speaker.url.taken", groups={"settings"})
- * @UniqueEntity(fields="phoneNumber", message="error.speaker.phoneNumber.taken", groups={"settings"})
+ * @UniqueEntity(fields="name", message="error.place.name.taken", groups={"settings"})
+ * @UniqueEntity(fields="email", message="error.place.email.taken", groups={"settings"})
+ * @UniqueEntity(fields="url", message="error.place.url.taken", groups={"settings"})
  */
-class Speaker
+class Place
 {
-
     /**
      * @var integer
      *
@@ -56,44 +57,18 @@ class Speaker
     /**
      * @var string
      * @Gedmo\Versioned
-     * @Assert\NotBlank(message = "error.speaker.name.notBlank", groups={"settings"})
      * @ORM\Column(name="name", type="string", length=255)
      */
     private $name;
 
     /**
-     * @var string
+     *
+     * @var string $email
      * @Gedmo\Versioned
-     * @Assert\NotBlank(message = "error.user.lastName.notBlank", groups={"settings"})
-     * @ORM\Column(name="last_name", type="string", length=255)
+     * @ORM\Column(name="email", type="string", length=255, nullable=true)
+     * @Assert\Email(message = "error.email.notMatch", groups={"settings"})
      */
-    private $lastName;
-
-    /**
-     * @var string
-     * @Gedmo\Versioned
-     * @Assert\Url(
-     *    message = "error.url.not_match",
-     *    protocols = {"http", "https"},
-     *    checkDNS = true
-     * )
-     * @ORM\Column(name="url", type="string", length=255, nullable=true)
-     */
-    private $url;
-
-    /**
-     * @var string
-     * @Gedmo\Versioned
-     * @ORM\Column(name="bio", type="text", nullable=true)
-     */
-    private $bio;
-
-    /**
-     * @var string
-     * @Gedmo\Versioned
-     * @ORM\Column(name="photo", type="string", length=255, nullable=true)
-     */
-    private $photo;
+    protected $email;
 
     /**
      * @var string
@@ -104,18 +79,39 @@ class Speaker
     private $phoneNumber;
 
     /**
-     *
-     * @var string $email
+     * @var string
      * @Gedmo\Versioned
-     * @Assert\Email(message = "error.email.notMatch", groups={"settings"})
-     * @ORM\Column(name="email", type="string", length=255, nullable=true)
+     * @Assert\Url(
+     *    message = "error.url.not_match",
+     *    protocols = {"http", "https"},
+     *    checkDNS = true,
+     *    groups={"settings"}
+     * )
+     * @ORM\Column(name="url", type="string", length=255, nullable=true)
      */
-    protected $email;
+    private $url;
 
     /**
-     * @ORM\OneToMany(targetEntity="Topic", mappedBy="speaker")
+     * @var string
+     * @Gedmo\Versioned
+     * @ORM\Column(name="description", type="text", nullable=true)
+     */
+    private $description;
+
+    /**
+     * @var string
+     * @Gedmo\Versioned
+     * @ORM\Column(name="resources", type="text", nullable=true)
+     */
+    private $resources;
+
+    /**
+     * @Gedmo\Versioned
+     * @Assert\NotBlank(message = "error.city.notBlank", groups={"settings"})
+     * @ORM\ManyToOne(targetEntity="City", inversedBy="places")
+     * @ORM\JoinColumn(name="city_id", referencedColumnName="id")
      **/
-    private $topics;
+    private $city;
 
     /**
      * Get id
@@ -128,20 +124,10 @@ class Speaker
     }
 
     /**
-     * Get topics
-     *
-     * @return ArrayCollection
-     */
-    public function getTopics()
-    {
-        return $this->topics;
-    }
-
-    /**
      * Set name
      *
      * @param string $name
-     * @return Speaker
+     * @return Place
      */
     public function setName($name)
     {
@@ -161,79 +147,79 @@ class Speaker
     }
 
     /**
-     * Set lastName
+     * Set description
      *
-     * @param string $lastName
-     * @return Speaker
+     * @param string $description
+     * @return Place
      */
-    public function setLastName($lastName)
+    public function setDescription($description)
     {
-        $this->lastName = $lastName;
+        $this->description = $description;
 
         return $this;
     }
 
     /**
-     * Get lastName
+     * Get description
      *
      * @return string
      */
-    public function getLastName()
+    public function getDescription()
     {
-        return $this->lastName;
+        return $this->description;
     }
 
     /**
-     * Set bio
+     * Set resources
      *
-     * @param string $bio
-     * @return Speaker
+     * @param string $resources
+     * @return Place
      */
-    public function setBio($bio)
+    public function setResources($resources)
     {
-        $this->bio = $bio;
+        $this->resources = $resources;
 
         return $this;
     }
 
     /**
-     * Get bio
+     * Get resources
      *
      * @return string
      */
-    public function getBio()
+    public function getResources()
     {
-        return $this->bio;
+        return $this->resources;
     }
 
     /**
-     * Set photo
+     * Set url
      *
-     * @param string $photo
-     * @return Speaker
+     * @param string $resources
+     * @return Place
      */
-    public function setPhoto($photo)
+    public function setUrl($url)
     {
-        $this->photo = $photo;
+        $this->url = $url;
 
         return $this;
     }
 
     /**
-     * Get photo
+     * Get url
      *
      * @return string
      */
-    public function getPhoto()
+    public function getUrl()
     {
-        return $this->photo;
+        return $this->url;
     }
 
     /**
      * Set phoneNumber
      *
      * @param string $phoneNumber
-     * @return Speaker
+     * @return Place
      */
     public function setPhoneNumber($phoneNumber)
     {
@@ -256,7 +242,7 @@ class Speaker
      * Set email
      *
      * @param string  $email
-     * @return Speaker
+     * @return Place
      */
     public function setEmail( $email ) {
         $this->email = $email;
@@ -274,29 +260,6 @@ class Speaker
     }
 
     /**
-     * Set url
-     *
-     * @param string $resources
-     * @return Speaker
-     */
-    public function setUrl($url)
-    {
-        $this->url = $url;
-
-        return $this;
-    }
-
-    /**
-     * Get url
-     *
-     * @return string
-     */
-    public function getUrl()
-    {
-        return $this->url;
-    }
-
-    /**
      * Get deletedAt
      *
      * @return DateTime
@@ -309,13 +272,36 @@ class Speaker
      * Set deletedAt
      *
      * @param string $deletedAt
-     * @return Speaker
+     * @return Place
      */
     public function setDeletedAt($deletedAt)
     {
         $this->deletedAt = $deletedAt;
 
         return $this;
+    }
+
+    /**
+     * Set resources
+     *
+     * @param string $city
+     * @return Place
+     */
+    public function setCity(City $city)
+    {
+        $this->city = $city;
+
+        return $this;
+    }
+
+    /**
+     * Get city
+     *
+     * @return City
+     */
+    public function getCity()
+    {
+        return $this->city;
     }
 
 }

@@ -1,0 +1,40 @@
+{# _form.html.twig place form view #}
+
+{% form_theme form 'OrganizationManagementBundle:Form:_checkboxes.html.twig' %}
+
+{{ form_start(form) }}
+{{ form_errors(form) }}
+
+<div class="form-group">
+    {{ form_row(form.name, {'attr': { 'class': 'form-control' } } ) }}
+</div>
+
+<div class="form-group">
+    {{ form_row(form.email, {'attr': { 'class': 'form-control' } } ) }}
+</div>
+
+<div class="form-group">
+    {{ form_row(form.url, {'attr': { 'class': 'form-control' } } ) }}
+</div>
+
+<div class="form-group">
+    {{ form_row(form.phoneNumber, {'attr': { 'class': 'form-control' } } ) }}
+</div>
+
+<div class="form-group">
+    {{ form_row(form.city, {'attr': { 'class': 'form-control' } } ) }}
+</div>
+
+<div class="form-group">
+    {{ form_row(form.description, {'attr': { 'class': 'form-control' } } ) }}
+</div>
+
+<div class="form-group">
+    {{ form_row(form.resources, {'attr': { 'class': 'form-control' } } ) }}
+</div>
+
+<div class="form-group">
+    {{ form_row(form.submit, {'attr': { 'class': 'btn btn-default' } } ) }}
+</div>
+
+{{ form_end(form) }}

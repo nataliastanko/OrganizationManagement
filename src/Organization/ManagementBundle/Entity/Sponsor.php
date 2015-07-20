@@ -59,6 +59,7 @@ class Sponsor
     /**
      * @var string
      * @Gedmo\Versioned
+     * @Assert\NotBlank(message = "error.user.sponsor.notBlank", groups={"settings"})
      * @ORM\Column(name="name", type="string", length=255)
      */
     private $name;
@@ -67,8 +68,8 @@ class Sponsor
      *
      * @var string $email
      * @Gedmo\Versioned
-     * @ORM\Column(name="email", type="string", length=255, nullable=true)
      * @Assert\Email(message = "error.email.notMatch", groups={"settings"})
+     * @ORM\Column(name="email", type="string", length=255, nullable=true)
      */
     protected $email;
 

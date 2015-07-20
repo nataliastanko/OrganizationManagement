@@ -1,0 +1,46 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>{{ 'organization.management.place.list' | trans }}</h1>
+    <p>
+        <a href="{{ path('place_new') }}" class="btn btn-primary">
+            {{ 'button.create' | trans }}
+        </a>
+    </p>
+
+    {% if entities is not empty %}
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>{{ 'list.number' | trans }}</th>
+                    <th>{{ 'organization.management.place.name' | trans }}</th>
+                    <th>{{ 'organization.management.place.email' | trans }}</th>
+                    <th>{{ 'organization.management.place.phoneNumber' | trans }}</th>
+                    <th>{{ 'organization.management.place.url' | trans }}</th>
+                    <th>&nbsp;</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for entity in entities %}
+                <tr>
+                    <td>{{ loop.index }}</td>
+                    <td>{{ entity.name }}</td>
+                    <td>{{ entity.email }}</td>
+                    <td>{{ entity.phoneNumber }}</td>
+                    <td><a href="{{ entity.url }}">{{ entity.url }}</a></td>
+                    <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('place_show', { 'id': entity.id }) }}">{{ 'button.show' | trans }}</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('place_edit', { 'id': entity.id }) }}">{{ 'button.edit' | trans }}</a>
+                        </li>
+                    </ul>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    {% endif %}
+{% endblock %}

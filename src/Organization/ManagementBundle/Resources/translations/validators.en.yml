@@ -2,6 +2,7 @@ error:
     sponsor:
         name:
             taken: "Sponsor already exists"
+            notBlank: "Please enter sponsor name"
         phoneNumber:
             taken: "Phone number already exists"
         email:
@@ -11,6 +12,7 @@ error:
     partner:
         name:
             taken: "Partner already exists"
+            notBlank: "Please enter partner name"
         phoneNumber:
             taken: "Phone number already exists"
         email:
@@ -28,11 +30,22 @@ error:
             taken: "Email already exists"
         url:
             taken: "URL already exists"
+        topic:
+            notBlank: "Please provide speaker"
     helper:
         name:
             notBlank: "Please enter helper name"
         lastName:
             notBlank: "Please enter helper last name"
+        phoneNumber:
+            taken: "Phone number already exists"
+        email:
+            taken: "Email already exists"
+        url:
+            taken: "URL already exists"
+    place:
+        name:
+            taken: "Place already exists"
         phoneNumber:
             taken: "Phone number already exists"
         email:

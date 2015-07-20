@@ -4,6 +4,8 @@ namespace Organization\ManagementBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
+use Symfony\Component\Validator\Constraints as Assert;
+
 use Gedmo\Timestampable\Traits\TimestampableEntity;
 use Gedmo\Blameable\Traits\BlameableEntity;
 use Gedmo\Mapping\Annotation as Gedmo;
@@ -47,6 +49,7 @@ class Topic
     /**
      * @var string
      * @Gedmo\Versioned
+     * @Assert\NotBlank(message = "error.topic.lastname.notBlank", groups={"settings"})
      * @ORM\Column(name="name", type="string", length=255)
      */
     private $name;
@@ -60,6 +63,7 @@ class Topic
 
     /**
      * @Gedmo\Versioned
+     * @Assert\NotBlank(message = "error.topic.speaker.notBlank", groups={"settings"})
      * @ORM\ManyToOne(targetEntity="Speaker", inversedBy="topics")
      * @ORM\JoinColumn(name="speaker_id", referencedColumnName="id")
      **/

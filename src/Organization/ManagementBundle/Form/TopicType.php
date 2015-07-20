@@ -15,9 +15,13 @@ class TopicType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('speaker', 'entity', [
+            ->add('speaker', 'entity',
+                [
                 'class' => 'Organization\ManagementBundle\Entity\Speaker',
-                'property' => 'name'
+                'property' => 'name',
+                'required' => true,
+                'label' => 'form.speaker.label',
+                'placeholder' => 'form.speaker.placeholder'
                 ]
             )
             ->add('name', 'text',

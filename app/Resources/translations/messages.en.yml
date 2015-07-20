@@ -23,6 +23,7 @@ menu:
     partners: "Partners"
     helpers: "Helpers"
     logs: "Actions logs"
+    plcaes: "Places"
 button:
     show: "details"
     back: "back"
@@ -35,3 +36,13 @@ button:
     disable: "disable"
 list:
     number: "Number"
+form:
+    city:
+        label: "Choose city"
+        placeholder: "Choose city"
+    topic:
+        label: "Choose topic"
+        placeholder: "Choose topic"
+    speaker:
+        label: "Choose sepaker"
+        placeholder: "Choose sepaker"

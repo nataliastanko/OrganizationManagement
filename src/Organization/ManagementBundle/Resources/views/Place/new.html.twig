@@ -1,0 +1,7 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>{{ 'organization.management.place.add' | trans }}</h1>
+
+    {% include 'OrganizationManagementBundle:Place:_form.html.twig' %}
+{% endblock %}

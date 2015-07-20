@@ -59,6 +59,11 @@ class City
     private $users;
 
     /**
+     * @ORM\OneToMany(targetEntity="Place", mappedBy="city")
+     **/
+    private $places;
+
+    /**
      * @ORM\ManyToMany(targetEntity="Sponsor", mappedBy="cities")
      **/
     private $sponsors;
@@ -75,6 +80,7 @@ class City
 
     public function __construct() {
         $this->users = new ArrayCollection();
+        $this->places = new ArrayCollection();
         $this->sponsor = new ArrayCollection();
         $this->helpers = new ArrayCollection();
         $this->partners = new ArrayCollection();
@@ -169,6 +175,16 @@ class City
     public function getUsers()
     {
         return $this->users;
+    }
+
+    /**
+     * Get places
+     *
+     * @return ArrayCollection
+     */
+    public function getPlaces()
+    {
+        return $this->palces;
     }
 
     /**

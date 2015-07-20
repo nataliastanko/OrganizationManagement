@@ -1,0 +1,52 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>{{ 'organization.management.place.details' | trans }}</h1>
+
+    <table class="table table-hover">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ entity.id }}</td>
+            </tr>
+            <tr>
+                <th>{{ 'organization.management.place.name' | trans }}</th>
+                <td>{{ entity.name }}</td>
+            </tr>
+            <tr>
+                <th>{{ 'organization.management.place.email' | trans }}</th>
+                <td>{{ entity.email }}</td>
+            </tr>
+            <tr>
+                <th>{{ 'organization.management.place.url' | trans }}</th>
+                <td><a href="{{ entity.url }}">{{ entity.url }}</a></td>
+            </tr>
+            <tr>
+                <th>{{ 'organization.management.place.phoneNumber' | trans }}</th>
+                <td>{{ entity.phoneNumber }}</td>
+            </tr>
+            <tr>
+                <th>{{ 'organization.management.place.city' | trans }}</th>
+                <td>{{ entity.city.name }}</td>
+            </tr>
+            <tr>
+                <th>{{ 'organization.management.place.description' | trans }}</th>
+                <td>{{ entity.description }}</td>
+            </tr>
+            <tr>
+                <th>{{ 'organization.management.place.resources' | trans }}</th>
+                <td>{{ entity.resources }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="pull-left">
+         <a class="btn btn-default" href="{{ path('place_edit', { 'id': entity.id }) }}">
+            {{ 'button.edit' | trans }}
+        </a>
+    </div>
+    <div class="pull-right">
+        {{ form(delete_form) }}
+    </div>
+
+{% endblock %}
