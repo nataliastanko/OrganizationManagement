@@ -28,7 +28,8 @@
         "twig/extensions": "~1.0",
         "ornicar/gravatar-bundle" : "dev-master",
         "knplabs/knp-paginator-bundle": "^2.4",
-        "misd/phone-number-bundle": "~1.0"
+        "misd/phone-number-bundle": "~1.0",
+        "stephanecollot/datetimepicker-bundle": "dev-master"
     },
     "require-dev": {
         "sensio/generator-bundle": "~2.3"

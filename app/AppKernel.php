@@ -23,6 +23,7 @@ class AppKernel extends Kernel
             new Ornicar\GravatarBundle\OrnicarGravatarBundle(),
             new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
             new Misd\PhoneNumberBundle\MisdPhoneNumberBundle(),
+            new SC\DatetimepickerBundle\SCDatetimepickerBundle(),
 
             new AppBundle\AppBundle(),
             new Organization\EnrollmentBundle\OrganizationEnrollmentBundle(),
