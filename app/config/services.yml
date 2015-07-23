@@ -4,11 +4,12 @@ parameters:
 #    parameter_name: value
 
 services:
-    managementapp.listener.request:
-        class: AppBundle\Services\LocaleListener
-        arguments: ["%kernel.default_locale%"]
-        tags:
-            - { name: kernel.event_subscriber }
+    # do not use locale listener, bur force from configuration
+    # managementapp.listener.request:
+    #     class: AppBundle\Services\LocaleListener
+    #     arguments: ["%kernel.default_locale%"]
+    #     tags:
+    #         - { name: kernel.event_subscriber }
 
     twig.extension.text:
          class: Twig_Extensions_Extension_Text
