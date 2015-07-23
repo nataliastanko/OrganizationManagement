@@ -6,6 +6,8 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
+use Organization\ManagementBundle\Entity\Speaker;
+
 use libphonenumber\PhoneNumberFormat;
 
 class SpeakerType extends AbstractType
@@ -21,6 +23,17 @@ class SpeakerType extends AbstractType
                 [
                 'required' => true,
                 'label' => 'organization.management.speaker.name'
+                ]
+            )
+            ->add('gender', 'choice', [
+                'label' => 'organization.management.speaker.gender.label',
+                'required' => true,
+                'placeholder' => 'organization.management.speaker.gender.placeholder',
+                'choices'  =>
+                    [
+                    Speaker::GENDER_FEMALE => 'female',
+                    Speaker::GENDER_MALE => 'male'
+                    ],
                 ]
             )
             ->add('url', 'url',

@@ -12,6 +12,9 @@ organization:
             facebookUrl: "Facebook page"
             phoneNumber: "Numer telefonu"
             bio: "Biografia, opis"
+            gender:
+                  label: "Płeć"
+                  placeholder: "Oznacz płeć osoby"
         topic:
             name: "Temat"
             description: "Opis"

@@ -32,6 +32,8 @@ error:
             taken: "Istnieje już prelegent z taką stroną internetową"
         topic:
             notBlank: "Wybierz proszę temat"
+        gender:
+            notBlank: "Oznacz płeć osoby"
     city:
         name:
             taken: "Istnieje już miasto o takiej nazwie"

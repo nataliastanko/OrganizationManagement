@@ -32,6 +32,8 @@ error:
             taken: "URL already exists"
         topic:
             notBlank: "Please provide speaker"
+        gender:
+            notBlank: "Please choose speaker gender"
     city:
         name:
             taken: "City already exists"

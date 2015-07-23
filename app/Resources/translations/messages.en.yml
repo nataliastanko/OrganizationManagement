@@ -49,3 +49,5 @@ form:
 year: "Year"
 month: "Month"
 day: "Day"
+female: "Female"
+male: "Male"

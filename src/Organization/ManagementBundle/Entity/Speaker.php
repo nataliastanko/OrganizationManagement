@@ -69,6 +69,16 @@ class Speaker
      */
     private $lastName;
 
+    const GENDER_FEMALE = 'female';
+    const GENDER_MALE = 'male';
+
+    /**
+     * @var string
+     * @Assert\NotBlank(message = "error.user.gender.notBlank", groups={"settings"})
+     * @ORM\Column(name="gender", type="string", length=6)
+     */
+    private $gender;
+
     /**
      * @var string
      * @Gedmo\Versioned
@@ -331,6 +341,29 @@ class Speaker
     public function getUrl()
     {
         return $this->url;
+    }
+
+    /**
+     * Set gender
+     *
+     * @param string $gender
+     * @return Speaker
+     */
+    public function setGender($gender)
+    {
+        $this->gender = $gender;
+
+        return $this;
+    }
+
+    /**
+     * Get gender
+     *
+     * @return string
+     */
+    public function getGender()
+    {
+        return $this->gender;
     }
 
     /**

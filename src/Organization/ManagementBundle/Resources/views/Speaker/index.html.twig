@@ -13,6 +13,7 @@
             <thead>
                 <tr>
                     <th>{{ 'list.number' | trans }}</th>
+                    <th>{{ 'organization.management.speaker.gender.label' | trans }}</th>
                     <th>{{ 'organization.management.speaker.name' | trans }}</th>
                     <th>{{ 'organization.management.speaker.lastName' | trans }}</th>
                     <th>{{ 'organization.management.speaker.email' | trans }}</th>
@@ -25,6 +26,7 @@
             {% for entity in entities %}
                 <tr>
                     <td>{{ loop.index }}</td>
+                    <td>{{ entity.gender | trans }}</td>
                     <td>{{ entity.name }}</td>
                     <td>{{ entity.lastName }}</td>
                     <td>{{ entity.email }}</td>
