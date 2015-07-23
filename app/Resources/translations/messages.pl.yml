@@ -46,3 +46,6 @@ form:
     speaker:
         label: "Wybierz prelegenta"
         placeholder: "Wybierz prelegenta"
+year: "Rok"
+month: "Miesiąc"
+day: "Dzień"

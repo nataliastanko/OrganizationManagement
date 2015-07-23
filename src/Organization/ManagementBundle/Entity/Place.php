@@ -3,6 +3,7 @@
 namespace Organization\ManagementBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -119,12 +120,21 @@ class Place
     private $resources;
 
     /**
+     * @ORM\OneToMany(targetEntity="Meeting", mappedBy="place")
+     **/
+    private $meetings;
+
+    /**
      * @Gedmo\Versioned
      * @Assert\NotBlank(message = "error.city.notBlank", groups={"settings"})
      * @ORM\ManyToOne(targetEntity="City", inversedBy="places")
      * @ORM\JoinColumn(name="city_id", referencedColumnName="id")
      **/
     private $city;
+
+    public function __construct() {
+        $this->meetings = new ArrayCollection();
+    }
 
     /**
      * Get id
@@ -338,6 +348,16 @@ class Place
     public function getCity()
     {
         return $this->city;
+    }
+
+    /**
+     * Get meetings
+     *
+     * @return ArrayCollection
+     */
+    public function getMeetings()
+    {
+        return $this->meetings;
     }
 
 }

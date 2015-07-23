@@ -23,12 +23,12 @@ class MeetingType extends AbstractType
                 'label' => 'organization.management.meeting.name'
                 ]
             )
-            ->add('description', 'textarea',
-                [
-                'required' => false,
-                'label' => 'organization.management.meeting.description'
-                ]
-            )
+            ->add('startDate', 'datetime', array(
+                'label' => 'organization.management.meeting.startDate',
+                'input'  => 'datetime',
+                'widget' => 'choice',
+                'placeholder' => array('year' => 'year', 'month' => 'month', 'day' => 'day')
+            ))
             ->add('city', 'entity',
                 [
                 'class' => 'Organization\ManagementBundle\Entity\City',
@@ -50,6 +50,12 @@ class MeetingType extends AbstractType
                     return $er->createQueryBuilder('u')
                         ->orderBy('u.name', 'ASC');
                 },
+                ]
+            )
+            ->add('description', 'textarea',
+                [
+                'required' => false,
+                'label' => 'organization.management.meeting.description'
                 ]
             )
             ->add('sponsors', 'entity',

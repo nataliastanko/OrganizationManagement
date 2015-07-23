@@ -46,3 +46,6 @@ form:
     speaker:
         label: "Choose sepaker"
         placeholder: "Choose sepaker"
+year: "Year"
+month: "Month"
+day: "Day"

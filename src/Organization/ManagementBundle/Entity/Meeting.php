@@ -38,6 +38,12 @@ class Meeting
     private $name;
 
     /**
+     * @var DateTime
+     * @ORM\Column(type="datetime", name="start_date", nullable=true)
+     */
+    private $startDate;
+
+    /**
      * @ORM\Column(name="deletedAt", type="datetime", nullable=true)
      */
     private $deletedAt;
@@ -81,6 +87,12 @@ class Meeting
      * @ORM\JoinColumn(name="city_id", referencedColumnName="id")
      **/
     private $city;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Place", inversedBy="meetings")
+     * @ORM\JoinColumn(name="place_id", referencedColumnName="id")
+     **/
+    private $place;
 
     /**
      * @ORM\ManyToMany(targetEntity="Topic", inversedBy="meetings")
@@ -137,6 +149,29 @@ class Meeting
     public function getName()
     {
         return $this->name;
+    }
+
+    /**
+     * Set startDate
+     *
+     * @param DateTime $startDate
+     * @return Meeting
+     */
+    public function setStartDate($startDate)
+    {
+        $this->startDate = $startDate;
+
+        return $this;
+    }
+
+    /**
+     * Get startDate
+     *
+     * @return DateTime
+     */
+    public function getStartDate()
+    {
+        return $this->startDate;
     }
 
     /**
