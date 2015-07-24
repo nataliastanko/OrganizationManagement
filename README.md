@@ -19,6 +19,10 @@ Integration with:
   * DoctrineMigrationsBundle
   * StofDoctrineExtensionsBundle
   * DoctrineFixturesBundle
+  * OrnicarGravatarBundle
+  * KnpPaginatorBundle
+  * MisdPhoneNumberBundle
+  * SCDatetimepickerBundle
 
 Installation and running
 ----------------------------------

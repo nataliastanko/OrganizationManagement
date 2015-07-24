@@ -35,6 +35,7 @@ class TopicController extends Controller
             'entities' => $entities,
         );
     }
+
     /**
      * Creates a new Topic entity.
      *
